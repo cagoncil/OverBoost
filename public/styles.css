@@ -147,6 +147,10 @@ hr {
 	font-size: 32px;
 }
 
+.navbar-brand {
+	font-style: italic;
+}
+
 a {
 	font-family: 'Lato', sans-serif;
 	font-weight: 700;
@@ -326,7 +330,7 @@ a:hover {
 	color: #f99e1a;
 }
 
-/* =============== REGISTER MODAL =============== */
+/* =============== REGISTER/LOGIN MODALS =============== */
 
 .modal {
 	background: rgba(0,0,0,0.5);
@@ -475,7 +479,6 @@ input:focus, #register-btn:focus, #login-btn:focus {
 	font-weight: 700;
 }
 
-
 ::selection {
 	background: #f99e1a;
 	color: #ede8e3;
@@ -486,9 +489,19 @@ input:focus, #register-btn:focus, #login-btn:focus {
 	color: #ede8e3;
 }
 
+/* =============== DASHBOARD =============== */
+/*pc background https://images.unsplash.com/photo-1562949615-ee7437a2abb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80*/
+/*mobile background https://images.unsplash.com/photo-1558742619-fd82741daa99?ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80*/
 
+.dashboard {
+	margin-top: 100px;
+	background: #0a0a0a;
+	color: #ede8e3;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+}
 
-
+/* =============== MEDIA QUERIES =============== */
 
 /*Changes navbar background on a smaller viewpoint (less than x-large)*/
 @media only screen and (max-width : 1200px) {
