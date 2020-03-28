@@ -1,0 +1,559 @@
+@font-face {
+	font-family: koverwatch;
+	src: url('fonts/koverwatch.ttf');
+}
+
+@font-face {
+	font-family: overwatch;
+	src: url('fonts/OVERWATCH.ttf');
+}
+
+
+* {
+	box-sizing: border-box;
+}
+
+body, html {
+	overflow-x: hidden;
+}
+
+html {
+	overflow-y: scroll; /* necessary to prevent modal moving background to the right */
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: auto;
+}
+
+/* Styles the navbar background upon scrolling */
+body{min-height:200vh;}
+.navbar-light {
+	transition: background-color 500ms ease;
+	background-color: rgba(0,0,0,0); 
+	font-color: #7561DF;"
+}
+.scrolled {
+	background:#0a0a0a;
+}
+
+/*the bg-opacity property adds black opacity to background image*/
+.bg-opacity {
+	height: 100vh; /* height: 100vh stretches div to bottom */
+    overflow-y: hidden; /*necessary to prevent second scrollbar on some screens */
+    position: relative;
+    background-color: #000;
+}
+
+.bg-opacity::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.95;
+    background: linear-gradient(to top, rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,1)), url("img/main.png")	50% 50% no-repeat; 
+	background-size: cover;
+    background-attachment:fixed;
+}
+
+#content {
+	text-align: left;
+	padding-top: 50vh;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 4.55em;
+	color: #D7CDC1;
+	font-family: 'koverwatch', serif;
+	text-shadow: 1px 4px 3px rgba(0,0,0,0.45), 0px 8px 13px rgba(0,0,0,0.3), 0px 18px 23px rgba(0,0,0,0.25);
+}
+
+h2 {
+	font-weight: 700;
+	font-size: 3.5em;
+	color: #f99e1a;
+	font-style: italic;
+	font-family: 'koverwatch', serif;
+}
+
+h3 {
+	color: #ede8e3;
+	font-family: 'Raleway', sans-serif;
+	font-size: 17px;
+}
+
+h4 {	
+	color: #f99e1a;
+	font-family: 'Raleway', sans-serif;
+}
+
+/* to use overwatch logo/symbol/icon */
+.glyphicon {
+	font-size: 3.5em;
+	color: #f99e1a;
+	font-family: 'overwatch', serif;
+}
+
+hr {
+	width: 400px;
+	border-top: 1px solid #9b9b9b;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+/* Navbar brand and navbar link font color */
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
+	color: #ede8e3; 
+	margin-right: 20px;
+	font-size: 17px;
+}
+
+.nav-link {
+	display: inline-block;
+	position: relative;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f99e1a;
+  transform-origin: center;
+  transform: translate(-50%, 0) scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  transform: translate(-50%, 0) scaleX(1);
+}
+
+/* Navbar link font STYLES and text shadow */
+.navbar-light .navbar-brand {
+	text-shadow: 1px 4px 3px rgba(0,0,0,0.30), 0px 6px 8px rgba(0,0,0,0.20), 0px 10px 13px rgba(0,0,0,0.10);
+}
+
+.navbar-light .navbar-brand {
+	font-family: 'koverwatch', sans-serif;
+	font-weight: 900;
+	font-size: 32px;
+}
+
+a {
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+	font-size: 15px;
+	color: #333;
+}
+
+a:hover {
+	color: #444;
+	text-decoration: none;
+}
+
+/* Orange links in bottom nav bar*/
+.sitelinks {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 100;
+	color:	#f99e1a; 
+	text-transform: capitalize;
+	text-decoration: none;
+}
+
+.sitelinks:hover {
+	color:	#ffc87a; 
+	text-decoration: none;
+}
+
+/* Gray font in bottom nav bars */
+.gray {
+	color: #9b9b9b;
+}
+
+/* Navbar link hover/active font color */
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus,  /*Changes color of navbar-brand*/
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus /*Changes color of all the navbar links*/ {
+    text-decoration: none;
+    color: #f99e1a;
+}
+
+/* Toggler button border color when active */
+ .custom-toggler:focus, .custom-toggler .navbar-toggler:focus {
+ 	outline-color: rgb(249,158,26);
+ 	outline-width: 2px;
+ }
+
+/* Toggler icon bar color, opacity 1.0 with 0.0 being completely transparent, 0.5 being half transparent */
+.custom-toggler .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(237,232,227, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* This changes the three bars inside the toggler icon to orange when hovered over*/
+.custom-toggler .navbar-toggler-icon:hover, .custom-toggler .navbar-toggler-icon:focus {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(249,158,26, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* This changes the border of the toggler icon to light grey */
+.custom-toggler.navbar-toggler {
+	border-color: rgb(215, 205, 193);
+	border-width: 1.5px;
+}
+
+.btn-warning {
+	font-family: 'Lato', sans-serif;
+	font-size: 17px;
+	font-weight: 600; 
+	color: white;
+	letter-spacing: 1px;
+	line-height: 25px;
+	border: 1.5px solid #f99e1a;
+	border-radius: 40px;
+	background: #f99e1a;
+	margin-top: 2.5em;
+	padding-right: 2em;
+	padding-left: 2em;
+	transition: all 0.3s ease 0s;
+}
+
+.btn:focus, .btn-warning:focus, 
+.btn-warning:hover, .btn-warning:active,
+.btn.btn-warning:active:hover {
+	color: #232323;
+	background: #f99e1a !important;
+	border: 1.5px solid #f99e1a !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.btn-success {
+	font-family: 'Lato', sans-serif;
+	font-size: 17px;
+	font-weight: 600;  color: #ede8e3;
+	letter-spacing: 1px;
+	line-height: 15px;
+	border: 1.5px solid #ede8e3;
+	border-radius: 40px;
+	background: transparent;
+	padding-right: 1em;
+	padding-left: 1em;
+	transition: background 0.3s ease 0s;
+}
+
+.btn-success:hover, .btn-success:focus,
+.btn-success:active, .btn.btn-success:active:hover {
+	color: #FFF;
+	background: #f99e1a;
+	border: 1.5px solid #f99e1a;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.tracer {
+	background: url(img/tracer.png)
+	50% 50% no-repeat; 
+	background-size: cover;
+	background-color: black;
+	opacity: 0.8;
+	height: 500px;
+}	
+
+.laptops {
+	background: url(img/laptops.png)
+	50% 50% no-repeat; 
+	background-size: cover;
+	background-color: black;
+	opacity: 0.75;
+	height: 500px;
+}	
+
+.money {
+	background: url(img/money.png)
+	50% 50% no-repeat; 
+	background-size: cover;
+	background-color: black;
+	opacity: 0.95;
+	height: 500px;
+}	
+
+#bottom-nav {
+	background-color: #0a0a0a;
+}
+
+.bottom-nav-item, .bottom-nav-item-payment {
+	/*.col-12*/
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+    max-width: 100%;
+    /*.p-4*/
+    padding: 1.5rem;
+    /*.col-sm-3*/
+    position: relative;
+    width: 100%;
+}
+
+/* same as bootstrap .row, but without margin properties */
+.better-row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.copyright {
+	background-color: #efefef;
+	font-size: 12px; 
+	color: #0a0a0a;
+	padding: 1.5rem;
+	text-align: center;
+}
+
+.copyright-paragraph {
+	font-size: 1.25rem;
+	font-weight: 300;
+	font-size: 12px; 
+	color: #0a0a0a;
+}
+
+.separator {
+	color: #f99e1a;
+}
+
+/* =============== REGISTER MODAL =============== */
+
+.modal {
+	background: rgba(0,0,0,0.5);
+	margin: auto;
+	z-index: 1030;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	margin: 0;
+}
+
+.modal-content {
+	text-align: center;
+	background: #f99e1a;
+	margin: auto;
+	padding: 2em;
+	width: 30vw;
+	border-radius: 10px;
+	border: 1px outset #fcbe65;
+	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
+.wrapper {
+	position: relative;
+	display: inline-block;
+}
+.close:before {
+	content: '✕';
+}
+.close {
+	position: absolute;
+	top: 2%;
+	right: 2%;
+	cursor: pointer;
+	overflow-y: hidden;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.fadeOut {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.fadeIn {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.register-header {
+	font-weight: 700;
+	font-size: 2em;
+	color: #ede8e3;
+	font-style: italic;
+	font-family: 'koverwatch', serif;
+	padding-right: 5px;
+}
+
+input, #register-btn, #login-btn {
+	font-size: 0.75em;
+	display: block;
+	margin: 0.5em auto;
+	width: 90%;
+}
+
+input {
+	background: rgba(237,232,227,0.3);
+	padding: 0.5em 0.5em 0.5em 0.75em;
+	border: none;
+	color: #222;
+	border-radius: 15px;
+}
+
+	input:focus {
+		background: rgba(237,232,227,0.45);
+	}
+
+	input:focus::-webkit-input-placeholder {
+	    color: transparent;
+	}
+
+	input:focus:-moz-placeholder {
+	    color: transparent;
+	}
+
+	input:focus::-moz-placeholder {
+	    color: transparent;
+	}
+
+::placeholder {
+	color: #333;
+}
+
+input::-webkit-input-placeholder {
+    color: #555;
+}
+
+input:-moz-placeholder {
+    color: #555;
+}
+
+input::-moz-placeholder {
+    color: #555;
+}
+
+#register-btn, #login-btn {
+	background: rgb(237,232,227);
+	color: #222;
+	font-size: 1.5em;
+	font-weight: 500;
+	font-style: italic;
+	font-family: 'koverwatch', serif;
+	padding-right: 10px;
+	border-radius: 25px;
+}
+
+input:focus, #register-btn:focus, #login-btn:focus {
+	outline: none;
+}
+
+.login-link {
+	font-size: 13px;
+}
+
+#reg-message {
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+
+::selection {
+	background: #f99e1a;
+	color: #ede8e3;
+}
+
+::-moz-selection {
+	background: #f99e1a;
+	color: #ede8e3;
+}
+
+
+
+
+
+/*Changes navbar background on a smaller viewpoint (less than x-large)*/
+@media only screen and (max-width : 1200px) {
+	.navbar-light {
+		background: #0a0a0a;
+	}
+
+	.nav-link::before { /* underline effect */
+		bottom: 15%;
+	}
+
+	.btn-success {
+		margin: 0.5rem 0;
+	}
+}
+
+
+@media only screen and (max-width: 1000px) {
+	.modal-content {
+		width: 50vw;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+
+	#content {
+		height: 100vh;
+		padding-top: 20vh;
+		padding-bottom: 5vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+
+	h1 {
+		font-size: 4em;
+		color: #ede8e3;
+	}
+
+	h4 {
+		font-weight: 600;
+		color: #f39306;
+	}
+
+	.btn-warning {
+		margin-top: 0;
+	}
+
+	.modal-content {
+		width: 80vw;
+	}
+
+	.bottom-nav-item-payment {
+		padding: 0;
+	}
+
+	.copyright {
+		padding: 1rem;
+	}
+}
+
+@media (min-width: 576px) {
+	.bottom-nav-item, .bottom-nav-item-payment {
+		-ms-flex: 0 0 25%;
+    	flex: 0 0 25%;
+    	max-width: 25%;
+	}
+}
