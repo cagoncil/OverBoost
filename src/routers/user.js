@@ -4,9 +4,6 @@ const User = require('../models/user') // Require user model file
 const auth = require('../middleware/auth') // Require authentication middleware file
 const router = new express.Router()
 
-const app = express()
-app.use(express.static(path.join(__dirname, 'public')));
-
 // ===== Create =====
 // Register new user
 
@@ -29,7 +26,7 @@ router.post('/users/login', async (req, res) => {
 		const user = await User.findByCredentials(req.body.email, req.body.password)
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
-		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+		res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'dashboard.html'))
 	} catch (e) {
 		res.status(400).send()
 	}
