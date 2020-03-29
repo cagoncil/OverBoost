@@ -11,7 +11,7 @@ document.onreadystatechange = () => {
   		setTimeout(() => {
         	document.querySelector('.loader').style.display = 'none'
         	document.querySelector('#fully-loaded').classList.remove('hide')
-    	}, 2000)
+    	}, 500)
   	}
 }
 
