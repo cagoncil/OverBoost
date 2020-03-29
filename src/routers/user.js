@@ -4,8 +4,8 @@ const User = require('../models/user') // Require user model file
 const auth = require('../middleware/auth') // Require authentication middleware file
 const router = new express.Router()
 
-const app = express()
-app.use('/static', express.static(path.resolve(__dirname, '..', '..', 'public')))
+// const app = express()
+// app.use('/static', express.static(path.resolve(__dirname, '..', '..', 'public')))
 
 // ===== Create =====
 // Register new user
