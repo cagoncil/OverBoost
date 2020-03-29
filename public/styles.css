@@ -27,8 +27,69 @@ body {
 	height: auto;
 }
 
-/* Styles the navbar background upon scrolling */
+/* =============== LOADER =============== */
 
+.loader {
+	background-color: #0f0f0f;
+	height: 100vh;
+	position: relative;
+}
+
+.outer,
+.middle,
+.inner {
+	border: 3px solid transparent;
+	border-top-color: #f99e1a;
+	border-right-color: #f99e1a;
+	border-radius: 50%;
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+}
+
+.outer {
+	width: 3.5em;
+	height: 3.5em;
+	margin-left: -1.75em;
+	margin-top: -1.75em;
+	animation: spin 2s linear infinite;
+}
+
+.middle {
+	width: 2.1em;
+	height: 2.1em;
+	margin-left: -1.05em;
+	margin-top: -1.05em;
+	animation: spin 1.75s linear reverse infinite;
+}
+
+.inner {
+	width: 0.8em;
+	height: 0.8em;
+	margin-left: -0.4em;
+	margin-top: -0.4em;
+	animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.hide {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+	-moz-transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+	-o-transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+	transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+}
+
+/* =============== NAVBAR =============== */
+
+/* Styles the navbar background upon scrolling */
 .navbar-light {
 	transition: background-color 500ms ease;
 	background-color: rgba(0,0,0,0); 
@@ -37,6 +98,103 @@ body {
 .scrolled {
 	background:#0a0a0a;
 }
+
+/* Navbar brand and navbar link font color */
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
+	color: #ede8e3; 
+	margin-right: 20px;
+	font-size: 17px;
+}
+
+.navbar-light .navbar-brand {
+	font-family: 'koverwatch', sans-serif;
+	font-weight: 900;
+	font-size: 32px;
+	font-style: italic;
+}
+
+/* to use overwatch logo/symbol/icon */
+.glyphicon {
+	font-size: 3.5em;
+	color: #f99e1a;
+	font-family: 'overwatch', serif;
+}
+
+/* Navbar link hover/active font color */
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus,  /*Changes color of navbar-brand*/
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus /*Changes color of all the navbar links*/ {
+    text-decoration: none;
+    color: #f99e1a;
+}
+
+.nav-link {
+	display: inline-block;
+	position: relative;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f99e1a;
+  transform-origin: center;
+  transform: translate(-50%, 0) scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  transform: translate(-50%, 0) scaleX(1);
+}
+
+/* Toggler button border color when active */
+ .custom-toggler:focus, .custom-toggler .navbar-toggler:focus {
+ 	outline: none;
+ }
+
+/* Toggler icon bar color, opacity 1.0 with 0.0 being completely transparent, 0.5 being half transparent */
+.custom-toggler .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(237,232,227, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* This changes the three bars inside the toggler icon to orange when hovered over*/
+.custom-toggler .navbar-toggler-icon:hover, .custom-toggler .navbar-toggler-icon:focus {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(249,158,26, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* This changes the border of the toggler icon to light grey */
+.custom-toggler.navbar-toggler {
+	border-color: rgb(215, 205, 193);
+	border-width: 1.5px;
+}
+
+.btn-success {
+	font-family: 'Lato', sans-serif;
+	font-size: 17px;
+	font-weight: 600;  
+	color: #ede8e3;
+	letter-spacing: 1px;
+	line-height: 15px;
+	border: 1.5px solid #ede8e3;
+	border-radius: 40px;
+	background: transparent;
+	padding-right: 1em;
+	padding-left: 1em;
+	transition: background 0.3s ease 0s;
+}
+
+.btn-success:hover, .btn.btn-success:focus {
+	color: #FFF;
+	background: #f99e1a !important;
+	border: 1.5px solid #f99e1a !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+
+/* =============== ABOVE THE SCROLL =============== */
 
 /*the bg-opacity property adds black opacity to background image*/
 .bg-opacity {
@@ -94,54 +252,65 @@ h4 {
 	font-family: 'Raleway', sans-serif;
 }
 
-/* to use overwatch logo/symbol/icon */
-.glyphicon {
-	font-size: 3.5em;
-	color: #f99e1a;
-	font-family: 'overwatch', serif;
-}
-
 hr {
 	width: 400px;
 	border-top: 1px solid #9b9b9b;
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
-/* Navbar brand and navbar link font color */
-.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
-	color: #ede8e3; 
-	margin-right: 20px;
+.btn-warning {
+	font-family: 'Lato', sans-serif;
 	font-size: 17px;
+	font-weight: 600; 
+	color: white;
+	letter-spacing: 1px;
+	line-height: 25px;
+	border: 1.5px solid #f99e1a;
+	border-radius: 40px;
+	background: #f99e1a;
+	margin-top: 2.5em;
+	padding-right: 2em;
+	padding-left: 2em;
+	transition: all 0.3s ease 0s;
 }
 
-.nav-link {
-	display: inline-block;
-	position: relative;
+.btn-warning:focus, .btn-warning:hover {
+	color: #232323;
+	background: #f99e1a !important;
+	border: 1.5px solid #f99e1a !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
-.nav-link::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #f99e1a;
-  transform-origin: center;
-  transform: translate(-50%, 0) scaleX(0);
-  transition: transform 0.3s ease-in-out;
-}
 
-.nav-link:hover::before {
-  transform: translate(-50%, 0) scaleX(1);
-}
+/* =============== BELOW THE SCROLL =============== */
 
-.navbar-light .navbar-brand {
-	font-family: 'koverwatch', sans-serif;
-	font-weight: 900;
-	font-size: 32px;
-	font-style: italic;
-}
+.tracer {
+	background: url(img/tracer.png)
+	50% 50% no-repeat; 
+	background-size: cover;
+	background-color: black;
+	opacity: 0.8;
+	height: 500px;
+}	
+
+.laptops {
+	background: url(img/laptops.png)
+	50% 50% no-repeat; 
+	background-size: cover;
+	background-color: black;
+	opacity: 0.75;
+	height: 500px;
+}	
+
+.money {
+	background: url(img/money.png)
+	50% 50% no-repeat; 
+	background-size: cover;
+	background-color: black;
+	opacity: 0.95;
+	height: 500px;
+}	
 
 a {
 	font-family: 'Lato', sans-serif;
@@ -173,111 +342,6 @@ a:hover {
 .gray {
 	color: #9b9b9b;
 }
-
-/* Navbar link hover/active font color */
-.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus,  /*Changes color of navbar-brand*/
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus /*Changes color of all the navbar links*/ {
-    text-decoration: none;
-    color: #f99e1a;
-}
-
-/* Toggler button border color when active */
- .custom-toggler:focus, .custom-toggler .navbar-toggler:focus {
- 	outline: none;
- }
-
-/* Toggler icon bar color, opacity 1.0 with 0.0 being completely transparent, 0.5 being half transparent */
-.custom-toggler .navbar-toggler-icon {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(237,232,227, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-/* This changes the three bars inside the toggler icon to orange when hovered over*/
-.custom-toggler .navbar-toggler-icon:hover, .custom-toggler .navbar-toggler-icon:focus {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(249,158,26, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-/* This changes the border of the toggler icon to light grey */
-.custom-toggler.navbar-toggler {
-	border-color: rgb(215, 205, 193);
-	border-width: 1.5px;
-}
-
-.btn-warning {
-	font-family: 'Lato', sans-serif;
-	font-size: 17px;
-	font-weight: 600; 
-	color: white;
-	letter-spacing: 1px;
-	line-height: 25px;
-	border: 1.5px solid #f99e1a;
-	border-radius: 40px;
-	background: #f99e1a;
-	margin-top: 2.5em;
-	padding-right: 2em;
-	padding-left: 2em;
-	transition: all 0.3s ease 0s;
-}
-
-.btn:focus, .btn-warning:focus, 
-.btn-warning:hover, .btn-warning:active,
-.btn.btn-warning:active:hover {
-	color: #232323;
-	background: #f99e1a !important;
-	border: 1.5px solid #f99e1a !important;
-	outline: none !important;
-	box-shadow: none !important;
-}
-
-.btn-success {
-	font-family: 'Lato', sans-serif;
-	font-size: 17px;
-	font-weight: 600;  
-	color: #ede8e3;
-	letter-spacing: 1px;
-	line-height: 15px;
-	border: 1.5px solid #ede8e3;
-	border-radius: 40px;
-	background: transparent;
-	padding-right: 1em;
-	padding-left: 1em;
-	transition: background 0.3s ease 0s;
-}
-
-.btn-success:hover, .btn-success:focus,
-.btn-success:active {
-	color: #FFF;
-	background: #f99e1a;
-	border: 1.5px solid #f99e1a;
-	outline: none !important;
-	box-shadow: none !important;
-}
-
-.tracer {
-	background: url(img/tracer.png)
-	50% 50% no-repeat; 
-	background-size: cover;
-	background-color: black;
-	opacity: 0.8;
-	height: 500px;
-}	
-
-.laptops {
-	background: url(img/laptops.png)
-	50% 50% no-repeat; 
-	background-size: cover;
-	background-color: black;
-	opacity: 0.75;
-	height: 500px;
-}	
-
-.money {
-	background: url(img/money.png)
-	50% 50% no-repeat; 
-	background-size: cover;
-	background-color: black;
-	opacity: 0.95;
-	height: 500px;
-}	
 
 #bottom-nav {
 	background-color: #0a0a0a;
@@ -482,45 +546,6 @@ input:focus, #register-btn:focus, #login-btn:focus {
 }
 
 /* =============== DASHBOARD =============== */
-/*pc background https://images.unsplash.com/photo-1562949615-ee7437a2abb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80*/
-/*mobile background https://images.unsplash.com/photo-1558742619-fd82741daa99?ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80*/
-
-.dashboard-container {
-	background-color: #094460;
-	height: 100vh;
-	position: relative;
-}
-
-.dashboard-container::before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.35;
-    background: linear-gradient(to top, rgba(14,122,155,0.5) 30%,
-        rgba(6,49,62,1)), url('https://live.staticflickr.com/7907/46502525754_55b73edae1_h.jpg') 50% 50% no-repeat; 
-	background-size: cover;
-
-}
-
-div.dashboard {
-	padding-top: 100px;
-	color: #ede8e3;
-	font-family: 'Raleway', sans-serif;
-	text-align: center;
-}
-
-h2.dashboard {
-	color: #10ad84;
-	font-weight: 700;
-	font-size: 3.5em;
-	font-style: italic;
-	font-family: 'koverwatch', serif;
-}
 
 .navbar-brand.dashboard:hover, .navbar-brand.dashboard:focus {
 	color: #10ad84; 
@@ -560,6 +585,44 @@ h2.dashboard {
 .custom-toggler .navbar-toggler-icon.dashboard:hover, .custom-toggler .navbar-toggler-icon.dashboard:focus {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(16,173,132, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
+
+.dashboard-container {
+	background-color: #094460;
+	height: 100vh;
+	position: relative;
+}
+
+.dashboard-container::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.35;
+    background: linear-gradient(to top, rgba(14,122,155,0.5) 30%,
+        rgba(6,49,62,1)), url('https://live.staticflickr.com/7907/46502525754_55b73edae1_h.jpg') 50% 50% no-repeat; 
+	background-size: cover;
+
+}
+
+div.dashboard {
+	padding-top: 100px;
+	color: #ede8e3;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+}
+
+h2.dashboard {
+	color: #10ad84;
+	font-weight: 700;
+	font-size: 3.5em;
+	font-style: italic;
+	font-family: 'koverwatch', serif;
+}
+
 
 /* =============== MEDIA QUERIES =============== */
 
