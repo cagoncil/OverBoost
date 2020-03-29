@@ -17,8 +17,8 @@ router.post('/users', async (req, res) => {
 		await user.save()
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
-		//res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
-		res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'))
+		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+		res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'styles.css'))
 	} catch (e) {
 		res.status(400).send(e)
 	}
