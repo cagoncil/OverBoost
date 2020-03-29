@@ -3,28 +3,27 @@
 // ======================================================
 
 // force page scroll position to top upon page refresh
-window.onbeforeunload = function () {
+window.onbeforeunload = () => {
 	window.scrollTo(0,0)
 }
 
 // ========= Navbar Functionality ========= 
 
 // changes scrollbar background color when scrolling down at least 10 pixels
-$(window).scroll(function(){
+$(window).scroll(() => {
   $('nav').toggleClass('scrolled', $(this).scrollTop() > 10)
 })
 
 // clicking outside open navbar closes the navbar
-	// Listen for all clicks on the document
-	document.addEventListener('click', function (event) {
-		if (!event.target.closest('.navbar-toggler')) {
-		// If a click happened on/inside the ACTIVE .navbar-collapse, don't run code to exit out of navbar
-		    if (event.target.closest('.navbar-collapse')) return;
+document.addEventListener('click', (event) => { // Listen for all clicks on the document
+	if (!event.target.closest('.navbar-toggler')) {
+	// If a click happened on/inside the ACTIVE .navbar-collapse, don't run code to exit out of navbar
+	    if (event.target.closest('.navbar-collapse')) return
 
-		    // Otherwise, run code, which exits out of active navbar
-		    $('.navbar-collapse').collapse('hide')
-		}
-	}, false)
+	    // Otherwise, run code, which exits out of active navbar
+	    $('.navbar-collapse').collapse('hide')
+	}
+}, false)
 
 // ========= Register/Login Modal ========= 
 
@@ -47,7 +46,7 @@ const regBtn = document.querySelector('#register-btn')
 const logBtn = document.querySelector('#login-btn')
 
 // open register modal if "sign up" button is clicked
-regNav.addEventListener('click', function(){
+regNav.addEventListener('click', () => {
 	// if "sign up/login" buttons are clicked, exit out of expanded navbar
 	$('.navbar-collapse').collapse('hide')
 
@@ -68,7 +67,6 @@ regNav.addEventListener('click', function(){
 
 // open login modal if "login" link is clicked
 logNav.addEventListener('click', (event) => {
-
 	// needed to prevent jumping to top of page from link click
 	event.preventDefault()
 
@@ -84,18 +82,18 @@ logNav.addEventListener('click', (event) => {
 	preventBodyScroll()
 
 	// trigger modal
-	logModal.classList.remove('fadeOut');
-	logModal.classList.add('fadeIn');
-	logContent.classList.remove('fadeOutUpBig', 'slow');
-	logContent.classList.add('slideInDown');
+	logModal.classList.remove('fadeOut')
+	logModal.classList.add('fadeIn')
+	logContent.classList.remove('fadeOutUpBig', 'slow')
+	logContent.classList.add('slideInDown')
 })
 
 // clicking x exits out of modal
-closeReg.onclick = fadeOutModal
-closeLog.onclick = fadeOutModal
+closeReg.onclick = () => fadeOutModal() 
+closeLog.onclick = () => fadeOutModal() 
 
 // clicking outside content div exits out of modal
-window.onclick = function(event) {
+window.onclick = (event) => {
   if (event.target == regModal) {
     fadeOutModal()
   } else if (event.target == logModal) {
@@ -103,13 +101,13 @@ window.onclick = function(event) {
   }
 }
 
-function fadeOutModal() {
+const fadeOutModal = () => {
 	restorePosition()
 	regContent.classList.remove('slideInDown')
 	regContent.classList.add('fadeOutUpBig', 'slow')
 	logContent.classList.remove('slideInDown')
 	logContent.classList.add('fadeOutUpBig', 'slow')
-	setTimeout(function(){ 
+	setTimeout(() => { 
 		regModal.classList.remove('fadeIn')
 		regModal.classList.add('fadeOut')
 		logModal.classList.remove('fadeIn')
@@ -117,13 +115,13 @@ function fadeOutModal() {
 	}, 300)
 }
 
-function preventBodyScroll(){
+const preventBodyScroll = () => {
 	document.querySelector('nav').style.background = '#0a0a0a'
 	document.body.style.top = '-' + window.scrollY + 'px'
 	document.body.style.position = 'fixed'
 }
 
-function restorePosition(){
+const restorePosition = () => {
 	const scrollY = document.body.style.top
 	document.body.style.position = ''
 	document.body.style.top = ''
