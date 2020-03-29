@@ -4,8 +4,8 @@ const User = require('../models/user') // Require user model file
 const auth = require('../middleware/auth') // Require authentication middleware file
 const router = new express.Router()
 
-// const app = express()
-// app.use('/static', express.static(path.resolve(__dirname, '..', '..', 'public')))
+const app = express()
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ===== Create =====
 // Register new user
@@ -18,8 +18,6 @@ router.post('/users', async (req, res) => {
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
 		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
-		// res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'styles.css'))
-		// res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'app.js'))
 	} catch (e) {
 		res.status(400).send(e)
 	}
@@ -32,8 +30,6 @@ router.post('/users/login', async (req, res) => {
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
 		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
-		// res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'styles.css'))
-		// res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'app.js'))
 	} catch (e) {
 		res.status(400).send()
 	}
