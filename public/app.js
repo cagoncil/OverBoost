@@ -2,8 +2,6 @@
 // ======================= CLIENT ======================= 
 // ======================================================
 
-alert('test')
-
 // force page scroll position to top upon page refresh
 window.onbeforeunload = function () {
 	window.scrollTo(0,0)
