@@ -5,8 +5,10 @@
 // only display loader until all static files are fully loaded
 document.onreadystatechange = () => {
 	const state = document.readyState
-	if (state == "complete") {
-    	setTimeout(() => {
+	if (state === 'interactive') {
+		return false
+  	} else if (state === 'complete') {
+  		setTimeout(() => {
         	document.querySelector('.loader').style.display = 'none'
         	document.querySelector('#fully-loaded').classList.remove('hide')
     	}, 1000)
