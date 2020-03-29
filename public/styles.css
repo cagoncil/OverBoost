@@ -13,8 +13,8 @@
 	box-sizing: border-box;
 }
 
-body, html {
-	overflow-x: hidden;
+body {
+	overflow: hidden;
 }
 
 html {
@@ -78,7 +78,7 @@ body {
 }
 
 .hide {
-	display: none;
+	height: 0;
 	visibility: hidden;
 	opacity: 0;
 	-webkit-transition: visibility 0s 0.7s, opacity 0.7s ease-out;
