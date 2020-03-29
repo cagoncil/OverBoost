@@ -12,8 +12,7 @@ const app = express()
 const port = process.env.PORT || 3000 // heroku port || localhost
 
 // ======== Middleware ========
-app.use('/static', express.static(path.join(__dirname, 'public')))
-//app.use(express.static('public')) // Serves static files (images, css, js...) on the frontend
+app.use(express.static('public')) // Serves static files (images, css, js...) on the frontend
 app.use(express.json()) // Recognizes incoming req.object from a POST request as a JSON object
 app.use(express.urlencoded({ extended: false })) // Parses data sent via forms from the frontend
 app.use(cookieParser()) // Parses cookies sent with the forms from the frontend
