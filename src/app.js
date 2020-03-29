@@ -26,5 +26,3 @@ app.use(userRouter) // Uses the router module
 app.listen(port, () => {
 	console.log('Server is up on port ' + port)
 })
-
-

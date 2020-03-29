@@ -28,11 +28,11 @@ body {
 }
 
 /* Styles the navbar background upon scrolling */
-body{min-height:200vh;}
+
 .navbar-light {
 	transition: background-color 500ms ease;
 	background-color: rgba(0,0,0,0); 
-	font-color: #7561DF;"
+	font-color: #7561DF;
 }
 .scrolled {
 	background:#0a0a0a;
@@ -136,18 +136,10 @@ hr {
   transform: translate(-50%, 0) scaleX(1);
 }
 
-/* Navbar link font STYLES and text shadow */
-.navbar-light .navbar-brand {
-	text-shadow: 1px 4px 3px rgba(0,0,0,0.30), 0px 6px 8px rgba(0,0,0,0.20), 0px 10px 13px rgba(0,0,0,0.10);
-}
-
 .navbar-light .navbar-brand {
 	font-family: 'koverwatch', sans-serif;
 	font-weight: 900;
 	font-size: 32px;
-}
-
-.navbar-brand {
 	font-style: italic;
 }
 
@@ -191,8 +183,7 @@ a:hover {
 
 /* Toggler button border color when active */
  .custom-toggler:focus, .custom-toggler .navbar-toggler:focus {
- 	outline-color: rgb(249,158,26);
- 	outline-width: 2px;
+ 	outline: none;
  }
 
 /* Toggler icon bar color, opacity 1.0 with 0.0 being completely transparent, 0.5 being half transparent */
@@ -240,7 +231,8 @@ a:hover {
 .btn-success {
 	font-family: 'Lato', sans-serif;
 	font-size: 17px;
-	font-weight: 600;  color: #ede8e3;
+	font-weight: 600;  
+	color: #ede8e3;
 	letter-spacing: 1px;
 	line-height: 15px;
 	border: 1.5px solid #ede8e3;
@@ -252,7 +244,7 @@ a:hover {
 }
 
 .btn-success:hover, .btn-success:focus,
-.btn-success:active, .btn.btn-success:active:hover {
+.btn-success:active {
 	color: #FFF;
 	background: #f99e1a;
 	border: 1.5px solid #f99e1a;
@@ -493,12 +485,80 @@ input:focus, #register-btn:focus, #login-btn:focus {
 /*pc background https://images.unsplash.com/photo-1562949615-ee7437a2abb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80*/
 /*mobile background https://images.unsplash.com/photo-1558742619-fd82741daa99?ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80*/
 
-.dashboard {
-	margin-top: 100px;
-	background: #0a0a0a;
+.dashboard-container {
+	background-color: #094460;
+	height: 100vh;
+	position: relative;
+}
+
+.dashboard-container::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.35;
+    background: linear-gradient(to top, rgba(14,122,155,0.5) 30%,
+        rgba(6,49,62,1)), url('https://live.staticflickr.com/7907/46502525754_55b73edae1_h.jpg') 50% 50% no-repeat; 
+	background-size: cover;
+
+}
+
+div.dashboard {
+	padding-top: 100px;
 	color: #ede8e3;
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
+}
+
+h2.dashboard {
+	color: #10ad84;
+	font-weight: 700;
+	font-size: 3.5em;
+	font-style: italic;
+	font-family: 'koverwatch', serif;
+}
+
+.navbar-brand.dashboard:hover, .navbar-brand.dashboard:focus {
+	color: #10ad84; 
+}
+
+.navbar-light .navbar-nav .nav-link.dashboard:hover, .navbar-light .navbar-nav .nav-link.dashboard:focus {
+    text-decoration: none;
+    color: #12c496;
+}
+
+.nav-link.dashboard::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #10ad84;
+  transform-origin: center;
+  transform: translate(-50%, 0) scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link.dashboard:hover::before {
+  transform: translate(-50%, 0) scaleX(1);
+}
+
+.btn-success.dashboard:hover, .btn-success.dashboard:focus,
+.btn-success.dashboard:active {
+	color: #FFF;
+	background: #10ad84 !important;
+	border: 1.5px solid #10ad84 !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.custom-toggler .navbar-toggler-icon.dashboard:hover, .custom-toggler .navbar-toggler-icon.dashboard:focus {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(16,173,132, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 /* =============== MEDIA QUERIES =============== */
@@ -507,6 +567,10 @@ input:focus, #register-btn:focus, #login-btn:focus {
 @media only screen and (max-width : 1200px) {
 	.navbar-light {
 		background: #0a0a0a;
+	}
+
+	.navbar-light.dashboard {
+		background: #08405b;
 	}
 
 	.nav-link::before { /* underline effect */
@@ -560,6 +624,10 @@ input:focus, #register-btn:focus, #login-btn:focus {
 
 	.copyright {
 		padding: 1rem;
+	}
+
+	.dashboard-container::before {
+		background-position: 100% 50%;
 	}
 }
 
