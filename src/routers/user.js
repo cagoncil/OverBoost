@@ -5,7 +5,7 @@ const auth = require('../middleware/auth') // Require authentication middleware 
 const router = new express.Router()
 
 const app = express()
-app.use(express.static('public'))
+app.use('/static', express.static(path.resolve(__dirname, '..', '..', 'public')))
 
 // ===== Create =====
 // Register new user
