@@ -1,7 +1,7 @@
 # OverBoost
 
 ### 🎮 About 🎮
-OverBoost is an ongoing project that I am using to both learn and demonstrate new skills. Closer to the beginning of my web development journey (mid-2019), I was practicing my understanding of HTML, CSS, and Bootstrap by building many simple websites. I asked my friend what my next website should be, to which she answered, "make a boosting website for Overwatch (a videogame we were both playing at the time)." 
+**OverBoost** is an ongoing project that I am using to both learn and demonstrate new skills. Closer to the beginning of my web development journey (mid-2019), I was practicing my knowledge of HTML, CSS, and Bootstrap by building simple websites. I asked my friend what my next website should be, to which she answered, "make a boosting website for Overwatch" (a videogame we were both playing at the time). 
 
 Overboost originally started out as a frontend project, but after studying *real* company websites for e-sports boosting services, I noticed a glaring oversight: some of these websites didn't offer crucial user experience elements, such as account registration, profile creation, and live chat options. Failure to create such essential features could be the deciding factor for a potential customer to forgo their business in lieu of a competitor's business. Thus began my journey into backend development.
 
