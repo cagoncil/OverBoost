@@ -8,7 +8,7 @@ Overboost originally started out as a frontend project, but after studying *real
 After a couple months of learning about server and database creation, I'm happy to report that the (encrypted and secure) account registration and login functionality of this project are now live. As I continue to delve into backend development, my intent is to gradually add more features including file uploads, a live chat app, and maybe even electronic payment options. The sky is the limit, and I'm excited to continue learning by building upon this project!
 
 ### 🎮 How it works 🎮
-You can visit the [live demo](http://overwatchboosting.herokuapp.com/) of this web app to peruse the site's contents, register a new account, and log in with your account details to view your private dashboard.
+You can visit the [live demo](http://overwatchboosting.herokuapp.com/) of this project to peruse its contents, create a new account, and log in with your account credentials to view your private dashboard. I had a lot of fun making this project, and hope you have fun exploring it!
 
 ### 🎮 Technologies used 🎮
 
