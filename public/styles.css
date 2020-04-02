@@ -603,7 +603,7 @@ input:focus, #register-btn:focus, #login-btn:focus {
     z-index: 0;
     opacity: 0.35;
     background: linear-gradient(to top, rgba(14,122,155,0.5) 30%,
-        rgba(6,49,62,1)), url('https://live.staticflickr.com/7907/46502525754_55b73edae1_h.jpg') 50% 50% no-repeat; 
+        rgba(6,49,62,1)), url('img/dashboard.png') 50% 50% no-repeat; 
 	background-size: cover;
 
 }
