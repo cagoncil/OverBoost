@@ -32,6 +32,18 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 	}
 })
 
+// Log out user
+router.post('/logout', auth, async (req, res) => {
+	try {
+		req.user.tokens = []
+		await req.user.save()
+
+		res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'))
+	} catch (e) {
+		res.status(500).send()
+	}
+})
+
 // ===== Read =====
 // Get user profile
 router.get('/users/profile', auth, async (req, res) => {

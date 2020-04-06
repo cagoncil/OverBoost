@@ -11,6 +11,7 @@ const auth = async (req, res, next) => {
 			throw new Error() // triggers catch(e) below
 		}
 
+		req.token = token // added for logout
 		req.user = user
 		next() // user authenticated correctly
 

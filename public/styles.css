@@ -569,6 +569,21 @@ input:focus, #register-btn:focus, #login-btn:focus {
   transition: transform 0.3s ease-in-out;
 }
 
+/* Logout button */
+.nav-item form button[type=submit] {
+	margin: 0;
+	width: inherit;
+	border: 0;
+	background: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: 'Lato', sans-serif;
+}
+
+	.nav-item form button[type=submit]:focus {
+		outline: none;
+	}
+
 .nav-link.dashboard:hover::before {
   transform: translate(-50%, 0) scaleX(1);
 }
