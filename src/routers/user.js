@@ -46,7 +46,7 @@ router.post('/logout', auth, async (req, res) => {
 
 // ===== Read =====
 // Get user profile
-router.get('/users/profile', auth, async (req, res) => {
+router.get('/profile', auth, (req, res) => {
 	res.send(req.user)
 })
 
