@@ -23,10 +23,6 @@ router.post('/welcome', async (req, res) => {
 // Log in existing user
 router.post('/dashboard', async (req, res) => { // use one word instead of two ('/users/login') to load static files
 	try {
-		if (req.user) {
-		    return res.redirect('/dashboard')
-		}
-
 		const user = await User.findByCredentials(req.body.email, req.body.password)
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
