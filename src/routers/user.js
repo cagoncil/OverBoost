@@ -26,9 +26,16 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 		const user = await User.findByCredentials(req.body.email, req.body.password)
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
-		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+		// res.header('Cache-Control', 'no-cache, max-age=0, stale-while-revalidate=300')
+
+		 res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+		// const dashboard = path.resolve(__dirname, '..', 'views', 'dashboard.html')
+		// console.log(dashboard)
+
+		// res.redirect('/dashboard')
 	} catch (e) {
-		res.status(400).send()
+		 res.status(400).send()
+		// res.status(400).redirect('/')
 	}
 })
 
@@ -37,35 +44,39 @@ router.post('/logout', auth, async (req, res) => {
 	try {
 		req.user.tokens = []
 		await req.user.save()
+		// res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'))
+		await res.redirect('/')
 
-		res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'))
+		// Terminates user's session
+		req.session = null // delete the cookie
+		req.session.destroy() // end session after redirected to index.html
 	} catch (e) {
 		res.status(500).send()
 	}
 })
 
 // ===== Read =====
-// Get user profile
-router.get('/profile', auth, (req, res) => {
-	res.send(req.user)
-})
 
-// Read one user
-router.get('/users/:id', async (req, res) => {
-	const _id = req.params.id
+// Go back to dashboard
+router.get('/dashboard', auth, (req, res) => {
 	try {
-		const user = await User.findById(_id)
-		if (!user) {
-			return res.status(404).send()
-		}
-		res.send(user)
+		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
 	} catch (e) {
 		res.status(500).send()
 	}
 })
 
+// Get user profile
+router.get('/profile', auth, (req, res) => {
+	res.send({
+		user: req.user,
+		email: req.user.email,
+		password: req.user.password
+	}) // req.user.email, req.user.password
+})
+
 // ===== Update =====
-router.patch('/users/:id', async (req, res) => {
+router.patch('/update', async (req, res) => {
 
 	const updates = Object.keys(req.body)
 	const allowedUpdates = ['email', 'password']
@@ -94,7 +105,7 @@ router.patch('/users/:id', async (req, res) => {
 })
 
 // ===== Delete =====
-router.delete('/users/:id', async (req, res) => {
+router.delete('/delete', async (req, res) => {
 
 	try {
 		const user = await User.findByIdAndDelete(req.params.id)

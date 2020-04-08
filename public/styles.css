@@ -584,6 +584,11 @@ input:focus, #register-btn:focus, #login-btn:focus {
 		outline: none;
 	}
 
+a .btn-success {
+	letter-spacing: normal;
+	line-height: normal;
+}
+
 .nav-link.dashboard:hover::before {
   transform: translate(-50%, 0) scaleX(1);
 }
@@ -622,6 +627,16 @@ input:focus, #register-btn:focus, #login-btn:focus {
 	background-size: cover;
 
 }
+
+	.dashboard-container ::selection {
+		background: #12c496;
+		color: #ede8e3;
+	}
+
+	.dashboard-container ::-moz-selection {
+		background: #12c496;
+		color: #ede8e3;
+	}
 
 div.dashboard {
 	padding-top: 100px;
