@@ -27,9 +27,9 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
 		// res.header('Cache-Control', 'no-cache, max-age=0, stale-while-revalidate=300')
-		 res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+		// res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
 		
-		// res.redirect('/dashboard')
+		res.redirect('/dashboard')
 	} catch (e) {
 		 res.status(400).send()
 		// res.status(400).redirect('/')
