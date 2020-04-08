@@ -29,6 +29,7 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 		// res.header('Cache-Control', 'no-cache, max-age=0, stale-while-revalidate=300')
 		// res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
 		
+		// Instead of sendFile, redirect to a GET request for /dashboard to prevent resubmission of sensitive info
 		res.redirect('/dashboard')
 	} catch (e) {
 		 res.status(400).send()
@@ -43,9 +44,9 @@ router.post('/logout', auth, async (req, res) => {
 		await req.user.save()
 		await res.redirect('/')
 
-		// Terminates user's session
-		// req.session = null // delete the cookie
-		// req.session.destroy() // end session after redirected to index.html
+		// Terminates user's session - seems unnecessary for now, but here just in case
+			// req.session = null // deletes the cookie
+			// req.session.destroy() // ends session after redirected to index.html
 	} catch (e) {
 		res.status(500).send()
 	}
