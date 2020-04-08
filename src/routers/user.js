@@ -27,12 +27,10 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
 		// res.header('Cache-Control', 'no-cache, max-age=0, stale-while-revalidate=300')
-
-		 res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
-		// const dashboard = path.resolve(__dirname, '..', 'views', 'dashboard.html')
-		// console.log(dashboard)
-
-		// res.redirect('/dashboard')
+		// res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+		
+		// 
+		res.redirect('/dashboard')
 	} catch (e) {
 		 res.status(400).send()
 		// res.status(400).redirect('/')
@@ -44,12 +42,11 @@ router.post('/logout', auth, async (req, res) => {
 	try {
 		req.user.tokens = []
 		await req.user.save()
-		// res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'))
 		await res.redirect('/')
 
 		// Terminates user's session
-		req.session = null // delete the cookie
-		req.session.destroy() // end session after redirected to index.html
+		// req.session = null // delete the cookie
+		// req.session.destroy() // end session after redirected to index.html
 	} catch (e) {
 		res.status(500).send()
 	}
