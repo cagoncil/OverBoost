@@ -35,7 +35,18 @@ const userSchema = new mongoose.Schema({
 	}]
 })
 
-userSchema.methods.generateAuthToken = async function() {
+userSchema.methods.toJSON = function () { // no arrow function because of usage of 'this'
+	const user = this
+	const userObject = user.toObject()
+
+	delete userObject.password
+	delete userObject.tokens
+	delete userObject.__v
+
+	return userObject
+}
+
+userSchema.methods.generateAuthToken = async function() { // no arrow function because of use of 'this'
 	const user = this
 	const token = jwt.sign({ _id: user._id.toString() }, 'overwatchboostingauth')
 	user.tokens = user.tokens.concat({ token })
@@ -58,7 +69,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
 }
 
 // Hash the plain text password before saving
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function (next) { // no arrow function because of use of 'this'
 	const user = this // user to be saved
 	if (user.isModified('password')) { // Hash password if it's been modified by the user
 		user.password = await bcrypt.hash(user.password, 8) // 2nd arg = # of hashing rounds to perform

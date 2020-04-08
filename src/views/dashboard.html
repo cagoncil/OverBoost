@@ -49,6 +49,8 @@
 			  	<h2 class='dashboard'>My Dashboard</h2>
 			  	<hr><br>
 			    <p>Congrats, you've successfully logged in!</p>
+
+			    <p id='account'></p>
 			</div>
 		</div>
 	</div>
@@ -63,12 +65,22 @@
 
 <!-- <script src="app.js"></script>	 -->
 
-<!-- Prevents form resubmission on refresh/back buttons. But not necessary with the PRG pattern -->
-<!-- <script>
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href )
-    }
-</script> -->
+
+<script>
+	// Prevents form resubmission on refresh/back buttons. But not necessary with the PRG pattern
+    // if ( window.history.replaceState ) {
+    //     window.history.replaceState( null, null, window.location.href )
+    // }
+
+    fetch('/profile')
+    	.then((response) => {
+	    	response.json()
+	    .then((data) => {
+	    	document.querySelector('#account').innerHTML = `Email: ${data.user.email}`
+	    	console.log(data.user)
+    	})
+	})
+</script>
 
 </body>
 </html>

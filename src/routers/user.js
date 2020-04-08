@@ -17,7 +17,7 @@ router.post('/welcome', async (req, res) => {
 		// res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
 
 		// Instead of sendFile, redirect to a GET request for /dashboard to prevent resubmission of sensitive info
-		res.redirect('/dashboard')
+		res.status(201).redirect('/dashboard')
 	} catch (e) {
 		res.status(400).send(e)
 	}
@@ -35,7 +35,7 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 		// Instead of sendFile, redirect to a GET request for /dashboard to prevent resubmission of sensitive info
 		res.redirect('/dashboard')
 	} catch (e) {
-		 res.status(400).send()
+		res.status(400).send()
 		// res.status(400).redirect('/')
 	}
 })
@@ -69,14 +69,12 @@ router.get('/dashboard', auth, (req, res) => {
 // Get user profile
 router.get('/profile', auth, (req, res) => {
 	res.send({
-		user: req.user,
-		email: req.user.email,
-		password: req.user.password
-	}) // req.user.email, req.user.password
+		user: req.user
+	}) // req.user.email, req.user._id
 })
 
 // ===== Update =====
-router.patch('/update', async (req, res) => {
+router.patch('/profile', auth, async (req, res) => {
 
 	const updates = Object.keys(req.body)
 	const allowedUpdates = ['email', 'password']
@@ -88,16 +86,9 @@ router.patch('/update', async (req, res) => {
 	}
 
 	try {
-		const user = await User.findById(req.params.id)
-
-		updates.forEach((update) => user[update] = req.body[update])
-		await user.save()
-
-		if (!user) {
-			return res.status(404).send()
-		}
-
-		res.send(user)
+		updates.forEach((update) => req.user[update] = req.body[update])
+		await req.user.save()
+		res.send(req.user)
 	} catch (e) {
 		res.status(400).send(e)
 	}
@@ -105,16 +96,11 @@ router.patch('/update', async (req, res) => {
 })
 
 // ===== Delete =====
-router.delete('/delete', async (req, res) => {
+router.delete('/profile', auth, async (req, res) => {
 
 	try {
-		const user = await User.findByIdAndDelete(req.params.id)
-
-		if (!user) {
-			return res.status(404).send()
-		}
-
-		res.send(user)
+		await req.user.remove()
+		res.send(req.user)
 
 	} catch (e) {
 		res.status(500).send(e)
