@@ -55,13 +55,13 @@ router.post('/logout', auth, async (req, res) => {
 // ===== Read =====
 
 // Go back to dashboard
-router.get('/dashboard', auth, (req, res) => {
-	try {
-		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
-	} catch (e) {
-		res.status(500).send()
-	}
-})
+// router.get('/dashboard', auth, (req, res) => {
+// 	try {
+// 		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+// 	} catch (e) {
+// 		res.status(500).send()
+// 	}
+// })
 
 // Get user profile
 router.get('/profile', auth, (req, res) => {
