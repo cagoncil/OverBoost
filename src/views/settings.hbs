@@ -23,7 +23,11 @@
 	<span id='email'></span>
 	<span><a href="#" id='emailLink'>🖉</a></span>
 </div>
-	<div class='edit hidden' id='emailEdit'><input placeholder='Edit Email' spellcheck=false><button id='emailBtn'>Submit</button></div>
+	<div class='edit hidden' id='emailEdit'>
+		<form method='PATCH' action='/profile' spellcheck='false'>
+			<input placeholder='Edit Email' type='email' name='email' required><button id='emailBtn' type='submit'>Submit</button>
+		</form>
+	</div>
 
 <div class='settings'>	<!--  Password  -->
 	<span><strong>Password</strong>: * * * * * * * *</span>

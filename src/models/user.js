@@ -27,6 +27,23 @@ const userSchema = new mongoose.Schema({
 			}
 		}
 	},
+	btag: {
+		type: String,
+		trim: true,
+		minlength: 8, // Min 3 characters + '#' + Min 4 numbers
+		maxlength: 18, // Max 12 characters + '#' + Max 5 numbers
+	},
+	server: {
+		type: String
+	},
+	name: {
+		type: String,
+		validate(value) {
+			if (!validator.isAlpha(value)) {
+				throw new Error('Must contain only letters.')
+			}
+		}
+	},
 	tokens: [{
 		token: {
 			type: String,

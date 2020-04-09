@@ -11,13 +11,12 @@ const userRouter = require('./routers/user') // Load user router module into the
 
 const app = express()
 const port = process.env.PORT || 3000 // heroku port || localhost
-console.log(path.join(__dirname, './views'))
 
 // ======== Middleware ========
 app.use(express.json()) // Recognizes incoming req.object from a POST request as a JSON object
 app.use(express.urlencoded({ extended: false })) // Parses data sent via forms from the frontend
 app.use(cookieParser()) // Parses cookies sent with the forms from the frontend
-app.engine('.hbs', exphbs({extname: '.hbs'})) // Setup handlebars engine
+app.engine('.hbs', exphbs({extname: '.hbs'})) // Setup handlebars engine, uses .hbs extension
 app.set('view engine', '.hbs')
 app.set('views', path.join(__dirname, './views')) // Setup handlebars views location
 app.use(express.static('public')) // Serves static files (images, css, js...) on the frontend

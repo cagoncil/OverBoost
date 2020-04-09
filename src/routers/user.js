@@ -81,12 +81,14 @@ router.get('/settings', auth, (req, res) => {
 
 
 // ===== Update =====
-router.patch('/profile', auth, async (req, res) => {
+router.patch('/settings', auth, async (req, res) => {
 
 	const updates = Object.keys(req.body)
-	const allowedUpdates = ['email', 'password']
+	const allowedUpdates = ['email', 'password', 'btag', 'server', 'name']
 	const isValidOperation = updates.every((update) => allowedUpdates.includes(update)) 
 	// runs code for everything in allowedUpdates array
+
+	console.log(updates)
 
 	if (!isValidOperation) {
 		return res.status(400).send({ error: 'Invalid update' })
