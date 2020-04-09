@@ -682,23 +682,64 @@ div.dashboard {
 
 
 /* =============== ACCOUNT SETTINGS =============== */
-#settings {
+
+.settings, .edit {
 	display: flex;
-	justify-content: space-between;
 	width: 25%;
-	margin: 0 auto;
 }
 
-	#settings a {
+.settings {
+	justify-content: space-between;
+	margin: 0 auto 1em;
+}
+
+	.settings span a {
 		color: #12c496;
 	}
 
-	#settings a:hover {
-		color: #10ad84;
+	.settings span a:hover {
+		color: #ede8e3;
+		text-decoration: none;
 	}
 
-	#settings strong {
+	.settings strong {
 		color: #589f99;
+	}
+
+.edit {
+	flex-direction: column;
+	margin: 0 auto 2em;
+}
+
+	.edit.hidden {
+		display: none;
+	}
+
+	.edit input {
+		border-radius: 40px;
+		width: 100%;
+		margin: 0.5em auto;
+		text-align: center;
+		color: #fff;
+		font-size: 0.9em;
+		font-family: 'Raleway', sans-serif;
+	}
+
+	.edit button {
+		background: none;
+		color: #12c496;
+		font-family: 'Lato';
+		border: 0;
+	}
+
+	.edit button:focus {
+		outline: none;
+		color: #589f99;
+	}
+
+	.edit ::placeholder {
+		color: #ede8e3;
+		text-align: center;
 	}
 
 
@@ -776,7 +817,7 @@ div.dashboard {
 		margin: 0 auto;
 	}
 
-	#settings {
+	.settings, .edit {
 		width: 95%;
 	}
 }
