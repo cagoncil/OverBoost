@@ -1,22 +1,28 @@
 // ======================================================
 // ======================= SERVER ======================= 
 // ======================================================
-
+const path = require('path') // Needed to get views path inside 'src' folder
 const express = require('express') // Initialize the express server
 require('./db/mongoose') // Require mongoose file to ensure file runs and mongoose connects to database
+const exphbs  = require('express-handlebars') // Register a Handlebars view engine
 const cookieParser = require('cookie-parser') // Use cookies to store the JSON web tokens on the frontend
 const User = require('./models/user') // Load user model module into the app
 const userRouter = require('./routers/user') // Load user router module into the app
 
 const app = express()
 const port = process.env.PORT || 3000 // heroku port || localhost
+console.log(path.join(__dirname, './views'))
 
 // ======== Middleware ========
-app.use(express.static('public')) // Serves static files (images, css, js...) on the frontend
 app.use(express.json()) // Recognizes incoming req.object from a POST request as a JSON object
 app.use(express.urlencoded({ extended: false })) // Parses data sent via forms from the frontend
 app.use(cookieParser()) // Parses cookies sent with the forms from the frontend
+app.engine('.hbs', exphbs({extname: '.hbs'})) // Setup handlebars engine
+app.set('view engine', '.hbs')
+app.set('views', path.join(__dirname, './views')) // Setup handlebars views location
+app.use(express.static('public')) // Serves static files (images, css, js...) on the frontend
 app.use(userRouter) // Uses the router module
+
 
 // Maintenance Mode
 // app.use((req, res, next) => {

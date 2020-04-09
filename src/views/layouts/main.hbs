@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Overboost</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Merriweather|Montserrat:400,700|Raleway" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <link rel="shortcut icon" href="img/overboost.ico">
+  </head>
+<body>
+	<!-- =============== NAVBAR =============== -->
+<div class='dashboard-container'>
+	<nav class="navbar navbar-expand-xl navbar-light fixed-top dashboard">
+	    <div class="container">
+	      	<a href="/dashboard" class="navbar-brand dashboard"><span style="font-family: overwatch; font-style: normal">@</span>OVERBOOST</a> 
+	      	<button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#overwatch-nav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	        	<span class="navbar-toggler-icon custom-toggler dashboard"></span>
+	      	</button>
+		    <div class="collapse navbar-collapse" id="overwatch-nav">
+		        <ul class="nav navbar-nav text-uppercase ml-auto">
+		          	<li class="nav-item"><a class="nav-link dashboard" href="/dashboard">Home</a></li>
+		         	<li class="nav-item"><a class="nav-link dashboard" href="#">Our Boosters</a></li>
+		          	<li class="nav-item"><a class="nav-link dashboard" href="#">Live Support</a></li>
+		          	<li class="nav-item"><a class="nav-link dashboard" href="#">My Orders</i></a></li>
+		        </ul>
+		        <ul class="nav navbar-nav justify-content-center d-flex ml-auto text-uppercase">
+		          	<li class="nav-item"><form method='POST' action='/logout'><button type="submit" class="nav-link dashboard" href="#">Log Out</button></form></li>
+		          	<!-- <li class="nav-item"><a class="nav-link dashboard" href="/">Log Out</a></li> -->
+		          	<span class="d-flex"> <!-- stops button below from filling container width -->
+		            	<a href="/settings"><button type="button" class="btn btn-success dashboard">My Account</button></a>
+		          	</span>
+		        </ul>
+		    </div> <!-- #overwatch-nav -->
+		</div> <!-- .container -->
+	</nav>
+
+    <div class="row">
+    	<div class="col-lg mx-auto">
+	  		<div class='dashboard'>
+			  	{{{body}}}
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- <script>
+	// Prevents form resubmission on refresh/back buttons. But not necessary with the PRG pattern
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href )
+    }
+</script> -->
+
+</body>
+</html>

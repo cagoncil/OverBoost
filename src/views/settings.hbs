@@ -1,0 +1,58 @@
+
+<h2 class='dashboard'>Account Settings</h2>
+	<hr><br>
+<div id='settings'>	<!-- BattleTag -->
+	<span id='battletag'></span>
+	<span><a href="#">🖉</a></span>
+</div>
+<br>
+<div id='settings'>	<!--  Server  -->
+	<span id='server'></span>
+	<span><a href="#">🖉</a></span>
+</div>
+<br>
+<div id='settings'>	<!--  Name  -->
+	<span id='name'></span>
+	<span><a href="#">🖉</a></span>
+</div>
+<br>
+<div id='settings'>	<!--  Email  -->
+	<span id='email'></span>
+	<span><a href="#">🖉</a></span>
+</div>
+<br>
+<div id='settings'>	<!--  Password  -->
+	<span><strong>Password</strong>: * * * * * * * *</span>
+	<span><a href="#">🖉</a></span>
+</div>
+<br>
+<button type="button" class="btn btn-success dashboard">Delete Account</button>
+
+<script>
+    fetch('/profile')
+    	.then((response) => {
+	    	response.json()
+	    .then((data) => {
+	    	if (data.user.btag) {
+	    		document.querySelector('#battletag').innerHTML = `<strong>Battle Tag</strong>: ${data.user.btag}`
+	    	} else {
+	    		document.querySelector('#battletag').innerHTML = `<strong>Battle Tag</strong>: <em>Add details</em>`
+	    	}
+
+	    	if (data.user.server) {
+	    		document.querySelector('#server').innerHTML = `<strong>Server</strong>: ${data.user.server}`
+	    	} else {
+	    		document.querySelector('#server').innerHTML = `<strong>Server</strong>: <em>Add details</em>`
+	    	}
+	    	
+	    	if (data.user.name) {
+	    		document.querySelector('#name').innerHTML = `<strong>Name</strong>: ${data.user.name}`
+	    	} else {
+	    		document.querySelector('#name').innerHTML = `<strong>Name</strong>: <em>Add details</em>`
+	    	}
+	    	
+	    	document.querySelector('#email').innerHTML = `<strong>Email</strong>: ${data.user.email}`
+	    	console.log(data.user)
+    	})
+	})
+</script>

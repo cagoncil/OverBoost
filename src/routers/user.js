@@ -60,7 +60,8 @@ router.post('/logout', auth, async (req, res) => {
 // Get dashboard after login or registration / Return to dashboard from another page
 router.get('/dashboard', auth, (req, res) => {
 	try {
-		res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
+		res.render('home') // Set handlebar route
+		// res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
 	} catch (e) {
 		res.status(500).send()
 	}
@@ -72,6 +73,12 @@ router.get('/profile', auth, (req, res) => {
 		user: req.user
 	}) // req.user.email, req.user._id
 })
+
+// Edit user account settings
+router.get('/settings', auth, (req, res) => {
+	res.render('settings')
+})
+
 
 // ===== Update =====
 router.patch('/profile', auth, async (req, res) => {

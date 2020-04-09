@@ -547,6 +547,10 @@ input:focus, #register-btn:focus, #login-btn:focus {
 
 /* =============== DASHBOARD =============== */
 
+body.dashboard-container {
+	overflow-y: auto;
+}
+
 .navbar-brand.dashboard:hover, .navbar-brand.dashboard:focus {
 	color: #10ad84; 
 }
@@ -608,7 +612,7 @@ a .btn-success {
 
 .dashboard-container {
 	background-color: #094460;
-	height: 100vh;
+	min-height: 100vh;
 	position: relative;
 }
 
@@ -625,7 +629,6 @@ a .btn-success {
     background: linear-gradient(to top, rgba(14,122,155,0.5) 30%,
         rgba(6,49,62,1)), url('img/dashboard.png') 50% 50% no-repeat; 
 	background-size: cover;
-
 }
 
 	.dashboard-container ::selection {
@@ -643,15 +646,60 @@ div.dashboard {
 	color: #ede8e3;
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
+	width: 100%;
 }
 
-h2.dashboard {
-	color: #10ad84;
-	font-weight: 700;
-	font-size: 3.5em;
-	font-style: italic;
-	font-family: 'koverwatch', serif;
+	div.dashboard a {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 100;
+		font-size: 1em;
+		color: #12c496;
+	}
+
+	div.dashboard a:hover {
+		text-decoration: underline;
+	}
+
+	div.dashboard h2 {
+		color: #10ad84;
+		font-weight: 700;
+		font-size: 3.5em;
+		font-style: italic;
+		font-family: 'koverwatch', serif;
+	}
+
+	div.dashboard h4 {
+		color: #10ad84;
+	}
+
+	div.dashboard-container div.copyright {
+		position: relative;
+		width: 100%;
+		bottom: 0;
+		background: rgba(225,225,225,0.1);
+	}
+
+
+
+/* =============== ACCOUNT SETTINGS =============== */
+#settings {
+	display: flex;
+	justify-content: space-between;
+	width: 25%;
+	margin: 0 auto;
 }
+
+	#settings a {
+		color: #12c496;
+	}
+
+	#settings a:hover {
+		color: #10ad84;
+	}
+
+	#settings strong {
+		color: #589f99;
+	}
 
 
 /* =============== MEDIA QUERIES =============== */
@@ -721,6 +769,15 @@ h2.dashboard {
 
 	.dashboard-container::before {
 		background-position: 100% 50%;
+	}
+
+	div.dashboard {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	#settings {
+		width: 95%;
 	}
 }
 
