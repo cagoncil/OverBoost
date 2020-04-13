@@ -8,25 +8,5 @@ Don't forget to <a href="#subscribed!" id='subLink'>subscribe to our newsletter<
 
 <p>(If you wish to stop receiving emails, click <a href="#unsubscribed!" id='unsubLink'>here</a> to unsubscribe.)</p>
 
-<script>
-
-    fetch('/profile')
-    	.then((response) => {
-	    	response.json()
-	    .then((data) => {
-	    	if (data.user.btag) {
-	    		document.querySelector('#message').innerHTML = `Welcome back, <strong>${data.user.btag}</strong>!`
-	    	}
-
-	    	document.querySelector('#subLink').addEventListener('click', () => {
-	    		document.querySelector('#message').innerHTML = '<p><em>Subscribed! You will be receiving our newsletter shortly.</em></p>'
-	    	})
-
-	    	document.querySelector('#unsubLink').addEventListener('click', () => {
-	    		document.querySelector('#message').innerHTML = '<em>You have successfully unsubscribed from our mailing list.</em>'
-	    	})
-	
-    	})
-	})
-</script>
+<script src='src/home-app.js'></script>
 

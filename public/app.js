@@ -151,3 +151,4 @@ regBtn.addEventListener('click', (e) => {
 		e.preventDefault()
 	}
 })
+

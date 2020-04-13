@@ -632,12 +632,12 @@ a .btn-success {
 }
 
 	.dashboard-container ::selection {
-		background: #12c496;
+		background: #0e869b;
 		color: #ede8e3;
 	}
 
 	.dashboard-container ::-moz-selection {
-		background: #12c496;
+		background: #0e869b;
 		color: #ede8e3;
 	}
 
@@ -685,7 +685,7 @@ div.dashboard {
 
 .settings, .edit {
 	display: flex;
-	width: 25%;
+	width: 33%;
 }
 
 .settings {
@@ -764,10 +764,21 @@ div.dashboard {
 	}
 }
 
+@media only screen and (max-width: 1100px) {
+	.settings, .edit {
+		width: 45%;
+	}
+}
 
 @media only screen and (max-width: 1000px) {
 	.modal-content {
 		width: 50vw;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	.settings, .edit {
+		width: 65%;
 	}
 }
 

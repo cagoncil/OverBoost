@@ -35,7 +35,9 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 		// Instead of sendFile, redirect to a GET request for /dashboard to prevent resubmission of sensitive info
 		res.redirect('/dashboard')
 	} catch (e) {
-		res.status(400).send()
+		res.status(400).send({
+			error: 'Error: Invalid login credentials.'
+		})
 		// res.status(400).redirect('/')
 	}
 })
@@ -81,14 +83,12 @@ router.get('/settings', auth, (req, res) => {
 
 
 // ===== Update =====
-router.patch('/settings', auth, async (req, res) => {
+router.patch('/profile', auth, async (req, res) => {
 
 	const updates = Object.keys(req.body)
 	const allowedUpdates = ['email', 'password', 'btag', 'server', 'name']
 	const isValidOperation = updates.every((update) => allowedUpdates.includes(update)) 
 	// runs code for everything in allowedUpdates array
-
-	console.log(updates)
 
 	if (!isValidOperation) {
 		return res.status(400).send({ error: 'Invalid update' })
