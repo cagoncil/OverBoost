@@ -24,8 +24,9 @@
 	<span><a href="#" id='emailLink'>🖉</a></span>
 </div>
 	<div class='edit hidden' id='emailEdit'>
-		<form method='PATCH' action='/profile' spellcheck='false'>
-			<input placeholder='Edit Email' type='email' name='email' required><button id='emailBtn' type='submit'>Submit</button>
+		<form method='POST' action='/profile?_method=PATCH' spellcheck='false'>
+			<input placeholder='Edit Email' type='email' name='email' required>
+			<button id='emailBtn' type='submit'>Submit</button>
 		</form>
 	</div>
 
@@ -37,6 +38,8 @@
 
 	<div class='edit hidden' id='deleteWarning'>Are you sure you want to delete this account?<br>
 	WARNING: This action cannot be undone.</div>
-<button type="button" class="btn btn-success dashboard" id='deleteLink'>Delete Account</button>
+	<form method='POST' action='/profile?_method=DELETE'>
+		<button type="button" class="btn btn-success dashboard" id='deleteLink'>Delete Account</button>
+	</form>
 
 <script src='src/settings-app.js'></script>

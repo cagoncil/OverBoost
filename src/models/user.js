@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
 		lowercase: true,
 		validate(value) {
 			if (!validator.isEmail(value)) {
-				throw new Error('Email is invalid.')
+				throw new Error('The email you submitted was not valid.')
 			}
 		}
 	},
@@ -22,9 +22,9 @@ const userSchema = new mongoose.Schema({
 		trim: true,
 		minlength: 6,
 		validate(value) {
-		if (value.toLowerCase().includes('password')) {
-				throw new Error('Cannot set "password" as the password.')
-			}
+			if (value.toLowerCase().includes('password')) {
+				throw new Error('Your password cannot contain the word "password".')
+			} 
 		}
 	},
 	btag: {

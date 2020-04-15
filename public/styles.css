@@ -529,10 +529,11 @@ input:focus, #register-btn:focus, #login-btn:focus {
 	font-size: 13px;
 }
 
-#reg-message {
+#reg-message, #log-message {
 	font-family: 'Lato', sans-serif;
-	font-size: 12px;
-	font-weight: 700;
+	font-size: 0.9em;
+/*	font-weight: 700;*/
+	color: #ede8e3;
 }
 
 ::selection {

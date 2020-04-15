@@ -76,6 +76,15 @@ regNav.addEventListener('click', () => {
 	regModal.classList.add('fadeIn')
 	regContent.classList.remove('fadeOutUpBig', 'slow')
 	regContent.classList.add('slideInDown')
+
+	// if server sent back error message in search query, display message on modal
+	if (window.location.search) {
+		if (!window.location.search.includes('Invalid')) {
+			const message = document.querySelector('#reg-message')
+			message.innerText = 'Error: ' + decodeURI(window.location.search).replace(/[^a-zA-Z ]/g, "") + '.'
+		}
+	}
+
 })
 
 // open login modal if "login" link is clicked
@@ -99,6 +108,15 @@ logNav.addEventListener('click', (event) => {
 	logModal.classList.add('fadeIn')
 	logContent.classList.remove('fadeOutUpBig', 'slow')
 	logContent.classList.add('slideInDown')
+
+	// if server sent back error message in search query, display message on modal
+	if (window.location.search) {
+		if (window.location.search.includes('Invalid')) {
+			const message = document.querySelector('#log-message')
+			message.innerHTML = 'Error: ' + decodeURI(window.location.search).replace(/[^a-zA-Z ]/g, "") + '. Please try again.<br>'
+		}
+	}
+
 })
 
 // clicking x exits out of modal
@@ -149,6 +167,16 @@ regBtn.addEventListener('click', (e) => {
 	if (passField1.value !== passField2.value) {
 		message.innerText = 'Error: Password fields do not match!'
 		e.preventDefault()
-	}
+	} 
 })
 
+// If there is a search query in the URL, open modal to display error message
+if (window.location.search) {
+	if (window.location.search.includes('Invalid')) {
+		// Open login modal
+		logNav.click()
+	} else if (!window.location.search.includes('Invalid')) {
+		// Open register modal
+		regNav.click()
+	} 
+}

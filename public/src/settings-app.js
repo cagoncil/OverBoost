@@ -55,8 +55,12 @@ document.querySelector('#deleteLink').addEventListener('click', function () {
 
 	this.addEventListener('click', function () {
 		if (this.innerText = 'Confirm Account Deletion') {
+
 			document.getElementById('deleteWarning').innerHTML = ''
-			this.innerText = 'Deleted'
+			this.innerText = 'Account Deletion Successful'
+
+            document.querySelector('#deleteLink').type = 'submit'      
+            
 		}
 	})
 	

@@ -18,8 +18,16 @@ router.post('/welcome', async (req, res) => {
 
 		// Instead of sendFile, redirect to a GET request for /dashboard to prevent resubmission of sensitive info
 		res.status(201).redirect('/dashboard')
-	} catch (e) {
-		res.status(400).send(e)
+	} catch (e) { 
+		//res.status(400).send(e)
+		if (e.errors.email && e.errors.password) {
+			res.status(400).redirect('/?' + JSON.stringify(e.errors.email.message + ' and ' + e.errors.password.message))
+		} else if (e.errors.email) {
+			res.status(400).redirect('/?' + JSON.stringify(e.errors.email.message))
+		} else if (e.errors.password) {
+			res.status(400).redirect('/?' + JSON.stringify(e.errors.password.message))
+		}
+		
 	}
 })
 
@@ -35,10 +43,8 @@ router.post('/dashboard', async (req, res) => { // use one word instead of two (
 		// Instead of sendFile, redirect to a GET request for /dashboard to prevent resubmission of sensitive info
 		res.redirect('/dashboard')
 	} catch (e) {
-		res.status(400).send({
-			error: 'Error: Invalid login credentials.'
-		})
-		// res.status(400).redirect('/')
+		// res.status(400).send({ error: 'Error: Invalid login credentials.' })
+		res.status(400).redirect('/?' + JSON.stringify('Invalid email or password.'))
 	}
 })
 
@@ -97,7 +103,8 @@ router.patch('/profile', auth, async (req, res) => {
 	try {
 		updates.forEach((update) => req.user[update] = req.body[update])
 		await req.user.save()
-		res.send(req.user)
+		// res.send(req.user)
+		res.redirect('/settings')
 	} catch (e) {
 		res.status(400).send(e)
 	}
@@ -109,7 +116,8 @@ router.delete('/profile', auth, async (req, res) => {
 
 	try {
 		await req.user.remove()
-		res.send(req.user)
+		// res.send(req.user)
+		res.redirect('/')
 
 	} catch (e) {
 		res.status(500).send(e)

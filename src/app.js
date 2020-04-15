@@ -6,6 +6,7 @@ const express = require('express') // Initialize the express server
 require('./db/mongoose') // Require mongoose file to ensure file runs and mongoose connects to database
 const exphbs  = require('express-handlebars') // Register a Handlebars view engine
 const cookieParser = require('cookie-parser') // Use cookies to store the JSON web tokens on the frontend
+	const methodOverride = require('method-override')
 const User = require('./models/user') // Load user model module into the app
 const userRouter = require('./routers/user') // Load user router module into the app
 
@@ -16,6 +17,7 @@ const port = process.env.PORT || 3000 // heroku port || localhost
 app.use(express.json()) // Recognizes incoming req.object from a POST request as a JSON object
 app.use(express.urlencoded({ extended: false })) // Parses data sent via forms from the frontend
 app.use(cookieParser()) // Parses cookies sent with the forms from the frontend
+	app.use(methodOverride('_method'))
 app.engine('.hbs', exphbs({extname: '.hbs'})) // Setup handlebars engine, uses .hbs extension
 app.set('view engine', '.hbs')
 app.set('views', path.join(__dirname, './views')) // Setup handlebars views location
