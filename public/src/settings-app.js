@@ -49,6 +49,18 @@ buttonClick('nameLink', 'nameEdit')
 buttonClick('emailLink', 'emailEdit')
 buttonClick('passLink', 'passEdit')
 
+document.querySelector('#passBtn').addEventListener('click', (e) => {
+    const passField1 = document.querySelector('#new-password')
+    const passField2 = document.querySelector('#confirm')
+    const message = document.querySelector('#not-matching')
+    if (passField1.value !== passField2.value) {
+        message.innerText = 'Error: Password fields do not match!'
+        passField1.value = ''
+        passField2.value = ''
+        e.preventDefault()
+    } 
+})
+
 document.querySelector('#deleteLink').addEventListener('click', function () {
 	document.getElementById('deleteWarning').classList.remove('hidden')
 	this.innerText = 'Confirm Account Deletion'
@@ -65,3 +77,5 @@ document.querySelector('#deleteLink').addEventListener('click', function () {
 	})
 	
 })
+
+

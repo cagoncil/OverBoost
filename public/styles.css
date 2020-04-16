@@ -13,18 +13,16 @@
 	box-sizing: border-box;
 }
 
-body {
-	overflow: hidden;
-}
-
 html {
 	overflow-y: scroll; /* necessary to prevent modal moving background to the right */
 }
 
 body {
+	overflow: hidden;
 	margin: 0;
 	padding: 0;
 	height: auto;
+	width: 100%;
 }
 
 /* =============== LOADER =============== */
@@ -189,8 +187,10 @@ body {
 	color: #FFF;
 	background: #f99e1a !important;
 	border: 1.5px solid #f99e1a !important;
-	outline: none !important;
-	box-shadow: none !important;
+}
+
+.btn.btn-success:focus {
+	box-shadow: 0 0 0 0.2rem rgba(249, 158, 26, 0.25) !important;
 }
 
 
@@ -279,7 +279,10 @@ hr {
 	background: #f99e1a !important;
 	border: 1.5px solid #f99e1a !important;
 	outline: none !important;
-	box-shadow: none !important;
+}
+
+.btn-warning:focus {
+	box-shadow: 0 0 0 0.2rem rgba(249, 158, 26, 0.25) !important;
 }
 
 
@@ -389,7 +392,7 @@ a:hover {
 /* =============== REGISTER/LOGIN MODALS =============== */
 
 .modal {
-	background: rgba(0,0,0,0.5);
+	background: rgba(0,0,0,0.6);
 	margin: auto;
 	z-index: 1030;
 	left: 0;
@@ -494,10 +497,6 @@ input {
 	    color: transparent;
 	}
 
-::placeholder {
-	color: #333;
-}
-
 input::-webkit-input-placeholder {
     color: #555;
 }
@@ -545,6 +544,120 @@ input:focus, #register-btn:focus, #login-btn:focus {
 	background: #f99e1a;
 	color: #ede8e3;
 }
+
+/* =============== FRONTEND PAGES =============== */
+
+.frontend-container {
+	background-color: #000;
+	min-height: 100vh;
+	position: relative;
+}
+
+.frontend-container::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.35;
+    background: linear-gradient(to top, rgba(0,0,0,0.4) 50%,
+        rgba(0,0,0,1)), url("img/main.png")	50% 50% no-repeat; 
+	background-size: cover;
+}
+
+div.frontend {
+	padding-top: 100px;
+	color: #ede8e3;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	width: 60%;
+	margin: 0 auto;
+	height: auto;
+}
+
+.form-container {
+	background: rgba(34, 34, 34,0.75);
+	color: #ede8e3;
+	width: 80%;
+	height: 50vh;
+	margin: auto;
+	padding: 2em;
+	border-radius: 10px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	margin-bottom: 1em;
+}
+
+	.form-container ::-webkit-input-placeholder { /* Edge */
+		color: #222;
+	}
+
+	.form-container :-ms-input-placeholder { /* Internet Explorer 10-11 */
+		color: #222;
+	}
+
+	.form-container ::placeholder {
+		color: #222;
+	}
+
+.frontend form {
+	display: flex;
+	flex-direction: column;
+}
+
+	.frontend form input, .frontend form button, .frontend form textarea {
+		flex-basis: auto;
+		margin: 10px auto;
+	}
+
+	.frontend form input, .frontend form button {
+		flex-shrink: 0; 
+	}
+
+	.frontend form input, .frontend form textarea {
+		width: 90%;
+		border-radius: 10px;
+		color: #000;
+		background: rgba(237,232,227,0.45);
+	}
+
+	.frontend form textarea {
+		resize: none;
+		flex-grow: 1;
+		font-size: 0.75em;
+		margin: 0.5em auto;
+		padding: 0.5em 0.5em 0.5em 0.75em;
+		border: none;
+	}
+
+		.frontend form input:focus, .frontend form textarea:focus {
+			background: rgba(237,232,227,0.55);
+			outline: none;
+		}
+
+		.frontend form textarea:focus::-webkit-input-placeholder {
+		    color: transparent;
+		}
+
+		.frontend form textarea:focus:-moz-placeholder {
+		    color: transparent;
+		}
+
+		.frontend form textarea:focus::-moz-placeholder {
+		    color: transparent;
+		}
+
+	.form-container button {
+		border: 1.5px solid #f99e1a;
+		border-radius: 40px;
+		background: #f99e1a;
+		font-size: 0.85em;
+		padding: 0.65em 2em;
+	}
+
+
 
 /* =============== DASHBOARD =============== */
 
@@ -604,7 +717,10 @@ a .btn-success {
 	background: #10ad84 !important;
 	border: 1.5px solid #10ad84 !important;
 	outline: none !important;
-	box-shadow: none !important;
+}
+
+.btn-success.dashboard:focus {
+	box-shadow: 0 0 0 0.2rem rgba(16, 173, 132, 0.25) !important;
 }
 
 .custom-toggler .navbar-toggler-icon.dashboard:hover, .custom-toggler .navbar-toggler-icon.dashboard:focus {
@@ -647,7 +763,9 @@ div.dashboard {
 	color: #ede8e3;
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
-	width: 100%;
+	width: 50%;
+	margin: 0 auto;
+	height: auto;
 }
 
 	div.dashboard a {
@@ -686,7 +804,7 @@ div.dashboard {
 
 .settings, .edit {
 	display: flex;
-	width: 33%;
+	width: 66%;
 }
 
 .settings {
@@ -738,6 +856,16 @@ div.dashboard {
 		color: #589f99;
 	}
 
+	.edit ::-webkit-input-placeholder {
+		color: #ede8e3;
+		text-align: center;
+	}
+
+	.edit :-ms-input-placeholder {
+		color: #ede8e3;
+		text-align: center;
+	}	
+
 	.edit ::placeholder {
 		color: #ede8e3;
 		text-align: center;
@@ -765,25 +893,38 @@ div.dashboard {
 	}
 }
 
-@media only screen and (max-width: 1100px) {
+
+/* 	##Device = Tablets, Ipads (portrait)
+  	##Screen = B/w 768px to 1024px 	*/
+@media (min-width: 768px) and (max-width: 1024px) {
 	.settings, .edit {
 		width: 45%;
 	}
-}
 
-@media only screen and (max-width: 1000px) {
 	.modal-content {
 		width: 50vw;
 	}
 }
 
-@media only screen and (max-width: 750px) {
+/*@media only screen and (max-width: 1000px) {
+	.modal-content {
+		width: 50vw;
+	}
+}*/
+
+
+/*  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  	##Screen = B/w 481px to 767px 	*/
+@media (min-width: 481px) and (max-width: 767px) {
 	.settings, .edit {
 		width: 65%;
 	}
 }
 
-@media only screen and (max-width: 600px) {
+
+/* 	##Device = Most of the Smartphones Mobiles (Portrait)
+  	##Screen = B/w 320px to 479px	*/
+@media (min-width: 320px) and (max-width: 480px) { 
 
 	#content {
 		height: 100vh;
@@ -820,11 +961,20 @@ div.dashboard {
 		padding: 1rem;
 	}
 
+	.form-container {
+		width: 100%;
+		padding: 2em 1em;
+	}
+
+		.form-container button {
+			width: 90%;
+		}
+
 	.dashboard-container::before {
 		background-position: 100% 50%;
 	}
 
-	div.dashboard {
+	div.frontend, div.dashboard {
 		width: 90%;
 		margin: 0 auto;
 	}

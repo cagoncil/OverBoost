@@ -65,15 +65,71 @@ router.post('/logout', auth, async (req, res) => {
 
 // ===== Read =====
 
+// === Frontend page links - no authorization === 
+	// Our Services
+	router.get('/services', (req, res) => {
+		try {
+			res.render('services', {layout: 'frontend'})
+		}	catch (e) {
+			res.status(500).send(e)
+		}
+	})
+
+	// User Reviews
+	router.get('/reviews', (req, res) => {
+		try {
+			res.render('reviews', {layout: 'frontend'})
+		}	catch (e) {
+			res.status(500).send(e)
+		}
+	})
+
+	// Contact Our Team
+	router.get('/contact', (req, res) => {
+		try {
+			res.render('contactus', {layout: 'frontend'})
+		}	catch (e) {
+			res.status(500).send(e)
+		}
+	})
+
+
+// === Backend page links - authorization needed === 
+
 // Get dashboard after login or registration / Return to dashboard from another page
 router.get('/dashboard', auth, (req, res) => {
 	try {
-		res.render('home') // Set handlebar route
+		res.render('home', {layout: 'backend'}) // Set handlebar route
 		// res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
 	} catch (e) {
 		res.status(500).send()
 	}
 })
+
+router.get('/boosters', auth, (req, res) => {
+	try {
+		res.render('boosters', {layout: 'backend'})
+	} catch (e) {
+		res.status(500).send()
+	}
+})
+
+router.get('/livesupport', auth, (req, res) => {
+	try {
+		res.render('livesupport', {layout: 'backend'})
+	} catch (e) {
+		res.status(500).send()
+	}
+})
+
+router.get('/orders', auth, (req, res) => {
+	try {
+		res.render('orders', {layout: 'backend'})
+	} catch (e) {
+		res.status(500).send()
+	}
+})
+
 
 // Get user profile
 router.get('/profile', auth, (req, res) => {
@@ -84,7 +140,7 @@ router.get('/profile', auth, (req, res) => {
 
 // Edit user account settings
 router.get('/settings', auth, (req, res) => {
-	res.render('settings')
+	res.render('settings', {layout: 'backend'})
 })
 
 
@@ -106,7 +162,9 @@ router.patch('/profile', auth, async (req, res) => {
 		// res.send(req.user)
 		res.redirect('/settings')
 	} catch (e) {
-		res.status(400).send(e)
+		const updates = Object.keys(req.body)[0] // e.g. 'email'
+		res.status(400).send('Error: ' + e.errors[updates].message) 
+		// res.render('settings', {layout: 'backend'})
 	}
 
 })

@@ -166,6 +166,8 @@ regBtn.addEventListener('click', (e) => {
 	const message = document.querySelector('#reg-message')
 	if (passField1.value !== passField2.value) {
 		message.innerText = 'Error: Password fields do not match!'
+		passField1.value = ''
+        passField2.value = ''
 		e.preventDefault()
 	} 
 })

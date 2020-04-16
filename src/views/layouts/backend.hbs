@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard</title>
+    <title>Overboost</title>
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -28,15 +28,15 @@
 		    <div class="collapse navbar-collapse" id="overwatch-nav">
 		        <ul class="nav navbar-nav text-uppercase ml-auto">
 		          	<li class="nav-item"><a class="nav-link dashboard" href="/dashboard">Home</a></li>
-		          	<li class="nav-item"><a class="nav-link dashboard" href="#">Services</i></a></li>
-		         	<li class="nav-item"><a class="nav-link dashboard" href="#">Our Boosters</a></li>
-		          	<li class="nav-item"><a class="nav-link dashboard" href="#">Live Support</a></li>
+		         	<li class="nav-item"><a class="nav-link dashboard" href="/boosters">Our Boosters</a></li>
+		          	<li class="nav-item"><a class="nav-link dashboard" href="/livesupport">Live Support</a></li>
+		          	<li class="nav-item"><a class="nav-link dashboard" href="/orders">Order History</i></a></li>
 		        </ul>
 		        <ul class="nav navbar-nav justify-content-center d-flex ml-auto text-uppercase">
 		          	<li class="nav-item"><form method='POST' action='/logout'><button type="submit" class="nav-link dashboard" href="#">Log Out</button></form></li>
 		          	<!-- <li class="nav-item"><a class="nav-link dashboard" href="/">Log Out</a></li> -->
 		          	<span class="d-flex"> <!-- stops button below from filling container width -->
-		            	<a href="/profile"><button type="button" class="btn btn-success dashboard">My Account</button></a>
+		            	<a href="/settings"><button type="button" class="btn btn-success dashboard">My Account</button></a>
 		          	</span>
 		        </ul>
 		    </div> <!-- #overwatch-nav -->
@@ -46,11 +46,7 @@
     <div class="row">
     	<div class="col-lg mx-auto">
 	  		<div class='dashboard'>
-			  	<h2 class='dashboard'>My Dashboard</h2>
-			  	<hr><br>
-			    <p>Congrats, you've successfully logged in!</p>
-
-			    <p id='account'></p>
+			  	{{{body}}}
 			</div>
 		</div>
 	</div>
@@ -63,24 +59,7 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<!-- <script src="app.js"></script>	 -->
-
-
-<script>
-	// Prevents form resubmission on refresh/back buttons. But not necessary with the PRG pattern
-    // if ( window.history.replaceState ) {
-    //     window.history.replaceState( null, null, window.location.href )
-    // }
-
-    fetch('/profile')
-    	.then((response) => {
-	    	response.json()
-	    .then((data) => {
-	    	document.querySelector('#account').innerHTML = `Email: ${data.user.email}`
-	    	console.log(data.user)
-    	})
-	})
-</script>
+<script src='src/main-app.js'></script>
 
 </body>
 </html>

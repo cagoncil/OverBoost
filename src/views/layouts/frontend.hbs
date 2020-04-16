@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Overboost</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Merriweather|Montserrat:400,700|Raleway" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <link rel="shortcut icon" href="img/overboost.ico">
+  </head>
+<body> 
+  <!-- =============== NAVBAR =============== -->
+    <nav class="navbar navbar-expand-xl navbar-light fixed-top">
+      <div class="container"> 
+        <a href="/" class="navbar-brand"><span style="font-family: overwatch; font-style: normal">@</span>OVERBOOST</a> 
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#overwatch-nav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon custom-toggler"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="overwatch-nav">
+          <ul class="nav navbar-nav text-uppercase ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/services">Our Services <i class="fas fa-angle-down"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="/reviews">User Reviews</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact">Contact Our Team</a></li>
+          </ul>
+          <ul class="nav navbar-nav justify-content-center d-flex ml-auto text-uppercase">
+            <li class="nav-item"><a class="nav-link" id="navbarLogin" href="#">Log in</a></li>
+            <span class="d-flex"> <!-- stops button below from filling container width -->
+              <button id="navbarRegister" type="button" class="btn btn-success">SIGN UP</button>
+            </span>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <!-- =============== ABOVE THE SCROLL =============== -->
+<div class='frontend-container'>
+      	<div class="row">
+        	<div class="col-lg mx-auto">
+  	    		<div class='frontend'>
+  	         		{{{body}}}
+        		</div>
+      		</div>
+    	</div>
+
+
+  <!-- =============== REGISTER MODAL =============== -->
+
+  <div id='register-modal' class='modal fadeOut'>
+    <div id='register-content' class='modal-content animated'>
+      <span id='register-close' class='close'></span>
+      <span class='register-header'>Register With Us</span>
+
+      <form method='POST' action='/welcome' spellcheck='false'>
+        <input type='email' id='reg-email' name='email' placeholder='Email' required>
+        <input type='password' id='reg-password' name='password' placeholder='Password' minlength='6' maxlength='18' required>
+        <input type='password' id='confirm' name='confirm' placeholder='Repeat Password' required>
+        <button type='submit' id='register-btn'>Create Your Account</button>
+      </form>
+      <span id='reg-message'></span>
+    </div>
+  </div>
+
+  <!-- =============== LOGIN MODAL =============== -->
+
+  <div id='login-modal' class='modal fadeOut'>
+    <div id='login-content' class='modal-content animated'>
+      <span id='login-close' class='close'></span>
+      <span class='register-header'>Login</span>
+      
+      <form method='POST' action='/dashboard' spellcheck="false">
+        <input type='email' id='log-email' name='email' placeholder='Email' required>
+        <input type='password' id='log-password' name='password' placeholder='Password' required>
+        <button type='submit' id='login-btn'>Submit</button>
+        <span id='log-message'></span>
+        <a href='#' class='login-link'>Forgot My Password</a>
+      </form>
+      
+    </div>
+  </div>
+
+
+</div>
+
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>

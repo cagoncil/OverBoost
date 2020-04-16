@@ -34,13 +34,22 @@ const userSchema = new mongoose.Schema({
 		maxlength: 18, // Max 12 characters + '#' + Max 5 numbers
 	},
 	server: {
-		type: String
-	},
-	name: {
 		type: String,
 		validate(value) {
 			if (!validator.isAlpha(value)) {
 				throw new Error('Must contain only letters.')
+			}
+		}
+	},
+	name: {
+		type: String,
+		validate(value) {
+			if (!validator.isAscii(value)) {
+				throw new Error('Must contain only letters.')
+			} else if (/\d/.test(value)) {
+				throw new Error('Name field cannot contain any numbers.')
+			} else if (/[&\/\\#,+=()@$~%`'":;*!?_^<>{}]/g.test(value)) {
+				throw new Error('Name cannot contain special characters.')
 			}
 		}
 	},
