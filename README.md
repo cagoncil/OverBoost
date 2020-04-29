@@ -18,6 +18,8 @@ You can visit the [live demo](http://overwatchboosting.herokuapp.com/) of this p
 - Node.js & NPM
 	- bcrypt & validator
 	- jsonwebtoken & cookie-parser
+	- express-handlebars
+	- method-override
 - Express
 - MongoDB & Mongoose
 
