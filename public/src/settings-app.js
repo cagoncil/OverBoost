@@ -31,14 +31,14 @@ fetch('/profile')
 // Edit button functions
 const buttonClick = (linkId, editId) => {
 	document.getElementById(linkId).addEventListener('click', function () {
-		if (this.innerText = '🖉') {
-			this.innerText = '✕'
+		if (this.innerHTML = '<i class="fas fa-pencil-alt"></i>') {
+			this.innerHTML = '<i class="fas fa-times"></i>'
 		} 
 
 		document.getElementById(editId).classList.toggle('hidden')
 
 		if (document.getElementById(editId).classList.contains('hidden')) {
-			this.innerText = '🖉'
+			this.innerHTML = '<i class="fas fa-pencil-alt"></i>'
 		}
 	})
 }

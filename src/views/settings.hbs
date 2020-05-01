@@ -5,61 +5,61 @@
 <!-- BattleTag -->
 <div class='settings'>
 	<span id='battletag'></span>
-	<span><a href="#" id='btagLink' class='editLink'>🖉</a></span>
+	<span><a href="#" id='btagLink' class='editLink'><i class="fas fa-pencil-alt"></i></a></span>
 </div>
 	<div class='edit hidden' id='btagEdit'>
 		<form method='POST' action='/profile?_method=PATCH' spellcheck=false>
 			<input placeholder='BattleTag#1234' name='btag'>
-			<button id='btagBtn' type='submit'>Submit</button>
+			<button id='btagBtn' type='submit'>Save Changes</button>
 		</form>
 	</div>
 
 <!--  Server  -->
 <div class='settings'>
 	<span id='server'></span>
-	<span><a href="#" id='serverLink'>🖉</a></span>
+	<span><a href="#" id='serverLink'><i class="fas fa-pencil-alt"></i></a></span>
 </div>
 	<div class='edit hidden' id='serverEdit'>
 		<form method='POST' action='/profile?_method=PATCH' spellcheck=false>
 			<input placeholder='Region' name='server'>
-			<button id='serverBtn' type='submit'>Submit</button>
+			<button id='serverBtn' type='submit'>Save Changes</button>
 		</form>
 	</div>
 
 <!--  Name  -->
 <div class='settings'>
 	<span id='name'></span>
-	<span><a href="#" id='nameLink'>🖉</a></span>
+	<span><a href="#" id='nameLink'><i class="fas fa-pencil-alt"></i></a></span>
 </div>
 	<div class='edit hidden' id='nameEdit'>
 		<form method='POST' action='/profile?_method=PATCH' spellcheck=false>
 			<input placeholder='Full Name' type='text' name='name'>
-			<button id='nameBtn' type='submit'>Submit</button>
+			<button id='nameBtn' type='submit'>Save Changes</button>
 		</form>
 	</div>
 
 <!--  Email  -->
 <div class='settings'>
 	<span id='email'></span>
-	<span><a href="#" id='emailLink'>🖉</a></span>
+	<span><a href="#" id='emailLink'><i class="fas fa-pencil-alt"></i></a></span>
 </div>
 	<div class='edit hidden' id='emailEdit'>
 		<form method='POST' action='/profile?_method=PATCH' spellcheck=false>
 			<input placeholder='Edit Email' type='email' name='email' required>
-			<button id='emailBtn' type='submit'>Submit</button>
+			<button id='emailBtn' type='submit'>Save Changes</button>
 		</form>
 	</div>
 
 <!--  Password  -->
 <div class='settings'>
 	<span><strong>Password</strong>: * * * * * * * *</span>
-	<span><a href="#" id='passLink'>🖉</a></span>
+	<span><a href="#" id='passLink'><i class="fas fa-pencil-alt"></i></a></span>
 </div>
 	<div class='edit hidden' id='passEdit'>
 		<form method='POST' action='/profile?_method=PATCH' spellcheck=false>
 			<input id='new-password' type='password' name='password' placeholder='New Password' spellcheck=false>
 			<input id='confirm' type='password' placeholder='Confirm Password' spellcheck=false>
-			<button id='passBtn'>Submit</button>
+			<button id='passBtn'>Save Changes</button>
 		</form>
 		<div class='hidden' id='not-matching'></div>
 	</div>

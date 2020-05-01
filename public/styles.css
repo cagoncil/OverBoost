@@ -258,32 +258,52 @@ hr {
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
-.btn-warning {
+.btn-warning, .btn-info {
 	font-family: 'Lato', sans-serif;
 	font-size: 17px;
 	font-weight: 600; 
 	color: white;
 	letter-spacing: 1px;
 	line-height: 25px;
-	border: 1.5px solid #f99e1a;
 	border-radius: 40px;
-	background: #f99e1a;
 	margin-top: 2.5em;
 	padding-right: 2em;
 	padding-left: 2em;
 	transition: all 0.3s ease 0s;
 }
 
-.btn-warning:focus, .btn-warning:hover {
-	color: #232323;
-	background: #f99e1a !important;
-	border: 1.5px solid #f99e1a !important;
-	outline: none !important;
+.btn-warning {
+	background: #f99e1a;
+	border: 1.5px solid #f99e1a;
 }
 
-.btn-warning:focus {
-	box-shadow: 0 0 0 0.2rem rgba(249, 158, 26, 0.25) !important;
+	.btn-warning:focus, .btn-warning:hover {
+		color: #232323;
+		background: #f99e1a !important;
+		border: 1.5px solid #f99e1a !important;
+		outline: none !important;
+	}
+
+	.btn-warning:focus {
+		box-shadow: 0 0 0 0.2rem rgba(249, 158, 26, 0.25) !important;
+	}
+
+.btn-info {
+	background: #10ad84;
+	border: 1.5px solid #10ad84;
 }
+
+	.btn-info:focus, .btn-info:hover {
+		background: #12c496 !important;
+		border: 1.5px solid #12c496 !important;
+		outline: none !important;
+	}
+
+	.btn-info:focus {
+		box-shadow: 0 0 0 0.2rem rgba(18, 196, 150, 0.25) !important;
+	}
+
+
 
 
 /* =============== BELOW THE SCROLL =============== */
@@ -910,6 +930,14 @@ div.dashboard {
 		color: #10ad84;
 	}
 
+	div.dashboard em {
+		border-bottom: 2px dashed #10ad84;
+		font-family: 'Lato';
+		color: #2fc09a;
+		font-style: normal;
+		font-weight: 600;
+	}
+
 	div.dashboard-container div.copyright {
 		position: relative;
 		width: 100%;
@@ -989,6 +1017,8 @@ div.dashboard {
 		color: #ede8e3;
 		text-align: center;
 	}
+
+
 
 
 /* =============== MEDIA QUERIES =============== */
@@ -1105,7 +1135,16 @@ div.dashboard {
 	.settings, .edit {
 		width: 95%;
 	}
+
+	#battletag, #server, #email, #name {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 75vw;
+	}
+
 }
+
 
 @media (min-width: 576px) {
 	.bottom-nav-item, .bottom-nav-item-payment {
