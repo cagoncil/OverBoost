@@ -1,5 +1,29 @@
 <h2>Our Services</h2><hr><br>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque numquam molestiae delectus. Ipsum expedita, vero voluptate unde. Incidunt magnam harum quisquam voluptatem eveniet commodi sint cumque minima asperiores soluta nulla accusamus et, quidem repellendus corporis consectetur laboriosam atque suscipit, similique consequatur quia quae.</p>
+<h3>We offer the following premium services:</h3>
 
-<p>Dolores veritatis dicta iure eos aspernatur praesentium ut provident eius quaerat ratione facilis modi vitae, cumque quae voluptatum suscipit! Dolorem at nesciunt est voluptatibus officia vel amet sit, atque quia cum repudiandae possimus ullam quis, culpa, minus, quo voluptate a in temporibus.</p>
+<div class='boost-options'>
+	<ul>
+		<li>Solo Queue Boosting</li>
+		<li>Duo Queue Boosting</li>
+		<li>Placement Games</li>
+		<li>Anti-Decay Games</li>
+		<li>Top 500 Boosting</li>
+		<li>Account Leveling</li>
+	</ul>
+
+	<button type="button" class="button">Start Boosting Today</button>
+</div>
+
+
+<script>
+	document.querySelector('.button').onmousemove = (e) => {
+
+	const x = e.pageX - e.target.offsetLeft
+	const y = e.pageY - e.target.offsetTop
+
+	e.target.style.setProperty('--x', `${ x }px`)
+	e.target.style.setProperty('--y', `${ y }px`)
+	
+}
+</script>

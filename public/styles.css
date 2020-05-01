@@ -573,20 +573,114 @@ div.frontend {
 	color: #ede8e3;
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
-	width: 60%;
+	width: 50%;
 	margin: 0 auto;
-	height: auto;
+	min-height: 100%;
 }
 
+	div.frontend h3 {
+		font-family: 'Lato', sans-serif;
+		font-weight: 700;
+		color: #f99e1a;
+		text-transform: uppercase;
+	}
+
+	.boost-options {
+		width: 250px;
+		margin: 1.5em auto auto;
+	}
+
+		.boost-options ul {
+			list-style: none;
+	  		margin-left: 0;
+	  		padding-left: 0;
+	  		font-size: 1.15em;
+		}
+
+		.boost-options li {
+			padding-left: 1em;
+			padding-bottom: 0.5em;
+			text-indent: -1em;
+			float: left;
+		}
+
+			.boost-options li:nth-child(even) {
+				float: right;
+			}
+
+			.boost-options li:before {
+				font-family: 'overwatch';
+				padding-right: 5px;
+				content: "&";
+				color: #f99e1a;
+			}
+
+			.boost-options li:nth-child(3n+2):before {
+				color: beige;
+				content: "@";
+			}
+
+			.boost-options li:nth-child(3n+1):before {
+				content: "#";
+				color: #888;
+			}
+
+		.boost-options button {
+			margin: 1.25em auto 2.5em;
+
+			--x: 50%;
+			--y: 50%;
+	
+			position: relative;
+			appearance: none;
+			padding: 0.75em 1.25em;
+			color: #f99e1a;
+			cursor: pointer;
+			outline: none;
+			border-radius: 100px;
+			font-family: 'Lato', sans-serif;
+			font-size: 17px;
+			font-weight: 600; 
+			text-transform: uppercase;
+			border: 2px solid transparent;
+			animation: morphing 3s infinite;
+			background: linear-gradient(#000, #000) padding-box, radial-gradient(farthest-corner at var(--x) var(--y), #fff, #f39306) border-box;
+		
+		}
+
+		@keyframes morphing {
+		0% {
+			border-radius: 80px 100px 70px 100px;
+			box-shadow: 5px -5px 30px rgba(255,255,255, 0.15);
+		}
+		50% {
+			border-radius: 100px 100px 100px 100px;
+			box-shadow: -5px -5px 40px rgba(255,255,255, 0.2);
+		}
+		75% {
+			border-radius: 100px 70px 100px 80px;
+			box-shadow: -5px 5px 30px rgba(255,255,255, 0.15);
+		}
+		100% {
+			border-radius: 80px 100px 70px 100px;
+			box-shadow: 5px -5px 30px rgba(255,255,255, 0.15);
+		}
+	}
+
+		.boost-options button:focus {
+			box-shadow: 0 0 0 0.25rem rgba(255,255,255,0.1);
+		}
+
 .form-container {
-	background: rgba(34, 34, 34,0.75);
+	background: rgba(34, 34, 34,0.55);
 	color: #ede8e3;
-	width: 80%;
-	height: 50vh;
+	width: 100%;
+	min-height: 50vh;
 	margin: auto;
 	padding: 2em;
 	border-radius: 10px;
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	margin-top: 2em;
 	margin-bottom: 1em;
 }
 
@@ -612,7 +706,7 @@ div.frontend {
 		margin: 10px auto;
 	}
 
-	.frontend form input, .frontend form button {
+	.frontend form input, .frontend form button, .frontend form textarea {
 		flex-shrink: 0; 
 	}
 
@@ -620,7 +714,7 @@ div.frontend {
 		width: 90%;
 		border-radius: 10px;
 		color: #000;
-		background: rgba(237,232,227,0.45);
+		background: rgba(237,232,227,0.55);
 	}
 
 	.frontend form textarea {
@@ -633,7 +727,7 @@ div.frontend {
 	}
 
 		.frontend form input:focus, .frontend form textarea:focus {
-			background: rgba(237,232,227,0.55);
+			background: rgba(237,232,227,0.7);
 			outline: none;
 		}
 
@@ -658,6 +752,31 @@ div.frontend {
 	}
 
 
+/* =============== REVIEWS =============== */
+
+.carousel-item {
+	min-height: 30vh;
+}
+
+	.carousel-item em {
+		color: #aaa;
+	}
+
+	.carousel-item .review {
+		width: 25vw;
+		margin: auto;
+	}
+
+.star-ratings-css {
+	unicode-bidi: bidi-override;
+	color: #f99e1a;
+	font-size: 25px;
+	height: 25px;
+	width: 100px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+}
 
 /* =============== DASHBOARD =============== */
 
@@ -969,6 +1088,10 @@ div.dashboard {
 		.form-container button {
 			width: 90%;
 		}
+
+	.carousel-item .review {
+		width: 50vw;
+	}
 
 	.dashboard-container::before {
 		background-position: 100% 50%;
