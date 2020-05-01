@@ -6,5 +6,15 @@
 	<h3>How can we help you?</h3>
 	<input type='email' name='email' placeholder='Your email' spellcheck=false required>
 	<textarea placeholder='Send us a message' spellcheck=false required></textarea>
-	<button class="btn btn-success">Send Email</button>
+	<button class="btn btn-success" type="submit">Send Email</button>
+	<span id="contact-message"></span>
 </form>
+
+<script>
+	document.querySelector('form').addEventListener('submit', (e) => {
+		e.preventDefault()
+		document.querySelector('input').value = ''
+		document.querySelector('textarea').value = ''
+		document.querySelector('#contact-message').innerText = 'Thank you for your message. We will respond to you shortly.'
+	})
+</script>

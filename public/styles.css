@@ -528,7 +528,7 @@ input:focus, #register-btn:focus, #login-btn:focus {
 	font-size: 13px;
 }
 
-#reg-message, #log-message {
+#reg-message, #log-message, #contact-message {
 	font-family: 'Lato', sans-serif;
 	font-size: 0.9em;
 /*	font-weight: 700;*/
