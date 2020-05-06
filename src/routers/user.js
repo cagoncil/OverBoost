@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const bcrypt = require('bcryptjs') // Require bcrypt to confirm password for account deletion
 const User = require('../models/user') // Require user model file
 const auth = require('../middleware/auth') // Require authentication middleware file
 const router = new express.Router()
@@ -147,8 +148,12 @@ router.get('/settings', auth, (req, res) => {
 // ===== Update =====
 router.patch('/profile', auth, async (req, res) => {
 
+	//const authenticated = await bcrypt.compare(req.body.password, req.user.password)
+	//const authenticated2 = await bcrypt.compare(req.body.oldpassword, req.user.password)
+	console.log(req.user.password)
+
 	const updates = Object.keys(req.body)
-	const allowedUpdates = ['email', 'password', 'btag', 'server', 'name']
+	const allowedUpdates = ['email', 'password', 'btag', 'server', 'name', 'oldpassword']
 	const isValidOperation = updates.every((update) => allowedUpdates.includes(update)) 
 	// runs code for everything in allowedUpdates array
 
@@ -157,13 +162,38 @@ router.patch('/profile', auth, async (req, res) => {
 	}
 
 	try {
-		updates.forEach((update) => req.user[update] = req.body[update])
+
+		if (updates[0] === 'email') { // Update email
+
+			const authenticated = await bcrypt.compare(req.body.password, req.user.password)
+			if (authenticated) { // If password is valid
+				req.user['email'] = req.body['email'] // Only update "email" field on frontend, ignore "password" field
+			} else {
+				throw new Error('Password entered was invalid. Email was not updated.')
+			}
+
+		} else if (updates[0] === 'oldpassword') { // Update password
+
+			const authenticated = await bcrypt.compare(req.body.oldpassword, req.user.password)
+			if (authenticated) { // If current password (aka, the "old" password being changed) is valid
+				req.user['password'] = req.body['password'] // Only update "password" field on frontend, ignore "oldpassword" field
+			} else {
+				throw new Error('Password entered was invalid. Password was not updated.')
+			}
+			
+		} else { // Update other fields that aren't data-sensitive/don't require password validation
+			updates.forEach((update) => req.user[update] = req.body[update])
+		}
+		
 		await req.user.save()
 		// res.send(req.user)
-		res.redirect('/settings')
+		res.redirect('/settings?success')
+		
+
 	} catch (e) {
-		const updates = Object.keys(req.body)[0] // e.g. 'email'
-		res.status(400).send('Error: ' + e.errors[updates].message) 
+		res.status(400).redirect('/settings?' + JSON.stringify('error'))
+		// const updates = Object.keys(req.body)[0] // e.g. 'email'
+		// res.status(400).send('Error: ' + e.errors[updates].message) 
 		// res.render('settings', {layout: 'backend'})
 	}
 
@@ -171,14 +201,20 @@ router.patch('/profile', auth, async (req, res) => {
 
 // ===== Delete =====
 router.delete('/profile', auth, async (req, res) => {
-
+	const authenticated = await bcrypt.compare(req.body.password, req.user.password)
+	
 	try {
-		await req.user.remove()
-		// res.send(req.user)
-		res.redirect('/')
+
+		if (authenticated) { // If password is valid
+			await req.user.remove()
+			// res.send(req.user)
+			res.redirect('/')
+		} else {
+			throw e()
+		}
 
 	} catch (e) {
-		res.status(500).send(e)
+		res.status(500).redirect('/settings?' + JSON.stringify('deletion'))
 	}
 
 })

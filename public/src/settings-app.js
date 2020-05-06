@@ -66,16 +66,24 @@ document.querySelector('#deleteLink').addEventListener('click', function () {
 	this.innerText = 'Confirm Account Deletion'
 
 	this.addEventListener('click', function () {
+
 		if (this.innerText = 'Confirm Account Deletion') {
-
-			document.getElementById('deleteWarning').innerHTML = ''
-			this.innerText = 'Account Deletion Successful'
-
-            document.querySelector('#deleteLink').type = 'submit'      
-            
+            document.querySelector('#deleteForm').submit()
 		}
+
 	})
 	
 })
 
+
+if (window.location.search) {
+    const message = document.querySelector('#settings-msg')
+    if (window.location.search.includes('error')) {
+        message.innerHTML = 'Error: <em>The password you entered was invalid. Please try again.</em><br><br>'
+    } else if (window.location.search.includes('success')) {
+        message.innerHTML = '<em>Your account information was changed successfully.</em><br><br>'
+    } else if (window.location.search.includes('deletion')) {
+        message.innerHTML = 'Error: <em>Invalid password. Account deletion unsuccessful.</em><br><br>'
+    }
+}
 

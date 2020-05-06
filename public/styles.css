@@ -930,7 +930,7 @@ div.dashboard {
 		color: #10ad84;
 	}
 
-	div.dashboard em {
+	div.dashboard em.code {
 		border-bottom: 2px dashed #10ad84;
 		font-family: 'Lato';
 		color: #2fc09a;

@@ -2,6 +2,8 @@
 <h2 class='dashboard'>Account Settings</h2>
 <hr><br>
 
+<span id='settings-msg'></span>
+
 <!-- BattleTag -->
 <div class='settings'>
 	<span id='battletag'></span>
@@ -45,7 +47,8 @@
 </div>
 	<div class='edit hidden' id='emailEdit'>
 		<form method='POST' action='/profile?_method=PATCH' spellcheck=false>
-			<input placeholder='Edit Email' type='email' name='email' required>
+			<input placeholder='New Email Address' type='email' name='email' required>
+			<input id='current-password' type='password' name='password' placeholder='Confirm Password' spellcheck=false required>
 			<button id='emailBtn' type='submit'>Save Changes</button>
 		</form>
 	</div>
@@ -57,8 +60,9 @@
 </div>
 	<div class='edit hidden' id='passEdit'>
 		<form method='POST' action='/profile?_method=PATCH' spellcheck=false>
+			<input id='current-password' type='password' name='oldpassword' placeholder='Current Password' spellcheck=false required>
 			<input id='new-password' type='password' name='password' placeholder='New Password' spellcheck=false>
-			<input id='confirm' type='password' placeholder='Confirm Password' spellcheck=false>
+			<input id='confirm' type='password' placeholder='Confirm New Password' spellcheck=false>
 			<button id='passBtn'>Save Changes</button>
 		</form>
 		<div class='hidden' id='not-matching'></div>
@@ -69,8 +73,9 @@
 	<div class='edit hidden' id='deleteWarning'>
 		Are you sure you want to delete this account?<br>
 		WARNING: This action cannot be undone.
+	<form method='POST' action='/profile?_method=DELETE' id='deleteForm'>
+		<input id='current-password' type='password' name='password' placeholder='Enter Your Password' spellcheck=false required>
 	</div>
-	<form method='POST' action='/profile?_method=DELETE'>
 		<button type="button" class="btn btn-success dashboard" id='deleteLink'>Delete Account</button>
 	</form>
 
