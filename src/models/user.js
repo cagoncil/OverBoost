@@ -59,9 +59,7 @@ const userSchema = new mongoose.Schema({
 			required: true
 		}
 	}],
-	// oldpassword: {
-	// 	type: String
-	// },
+
 })
 
 userSchema.methods.toJSON = function () { // no arrow function because of usage of 'this'
