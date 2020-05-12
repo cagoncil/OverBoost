@@ -11,7 +11,11 @@ fetch('/profile')
         }
 
     	document.querySelector('#subLink').addEventListener('click', () => {
-    		document.querySelector('#message').innerHTML = '<p><em>Subscribed! You will be receiving our newsletter shortly.</em></p>'
+    		document.querySelector('#message').innerHTML = 
+            `<p><em>
+            Subscribed! You will be receiving our newsletter shortly.<br>
+            Please check your <strong>spam</strong> folder if emails aren't showing.
+            </em></p>`
     	})
 
     	document.querySelector('#unsubLink').addEventListener('click', () => {

@@ -5,12 +5,13 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js -e js,hbs,css"
+    "dev": "env-cmd -f ./config/dev.env nodemon src/app.js -e js,hbs,css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "nodemon": "^2.0.2"
   },
   "dependencies": {

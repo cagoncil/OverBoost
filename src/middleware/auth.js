@@ -4,7 +4,7 @@ const User = require('../models/user')
 const auth = async (req, res, next) => {
 	try {
 		const token = req.cookies['auth_token']
-		const decoded = jwt.verify(token, 'overwatchboostingauth') // ensure token hasn't expired
+		const decoded = jwt.verify(token, process.env.JWT_SECRET) // ensure token hasn't expired
 		const user = await User.findOne({ _id: decoded._id, 'tokens.token': token }) // grab user from database
 
 		if (!user) {

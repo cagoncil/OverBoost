@@ -11,7 +11,7 @@ const User = require('./models/user') // Load user model module into the app
 const userRouter = require('./routers/user') // Load user router module into the app
 
 const app = express()
-const port = process.env.PORT || 3000 // heroku port || localhost
+const port = process.env.PORT // heroku port || localhost
 
 // ======== Middleware ========
 app.use(express.json()) // Recognizes incoming req.object from a POST request as a JSON object

@@ -75,7 +75,7 @@ userSchema.methods.toJSON = function () { // no arrow function because of usage 
 
 userSchema.methods.generateAuthToken = async function() { // no arrow function because of use of 'this'
 	const user = this
-	const token = jwt.sign({ _id: user._id.toString() }, 'overwatchboostingauth')
+	const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET)
 	user.tokens = user.tokens.concat({ token })
 	await user.save()
 	return token

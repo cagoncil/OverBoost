@@ -3,6 +3,7 @@ const express = require('express')
 const bcrypt = require('bcryptjs') // Require bcrypt to confirm password for account deletion
 const User = require('../models/user') // Require user model file
 const auth = require('../middleware/auth') // Require authentication middleware file
+const { sendWelcomeEmail, sendGoodbyeEmail } = require('../emails/account') // ES6 destructuring to require email code
 const router = new express.Router()
 
 // ===== Create =====
@@ -13,6 +14,7 @@ router.post('/welcome', async (req, res) => {
 
 	try {
 		await user.save()
+		sendWelcomeEmail(user.email)
 		const token = await user.generateAuthToken()
 		res.cookie('auth_token', token)
 		// res.sendFile(path.resolve(__dirname, '..', 'views', 'dashboard.html'))
@@ -148,9 +150,7 @@ router.get('/settings', auth, (req, res) => {
 // ===== Update =====
 router.patch('/profile', auth, async (req, res) => {
 
-	//const authenticated = await bcrypt.compare(req.body.password, req.user.password)
-	//const authenticated2 = await bcrypt.compare(req.body.oldpassword, req.user.password)
-	console.log(req.user.password)
+	// console.log(req.user.password)
 
 	const updates = Object.keys(req.body)
 	const allowedUpdates = ['email', 'password', 'btag', 'server', 'name', 'oldpassword']
@@ -207,6 +207,7 @@ router.delete('/profile', auth, async (req, res) => {
 
 		if (authenticated) { // If password is valid
 			await req.user.remove()
+			sendGoodbyeEmail(req.user.email)
 			// res.send(req.user)
 			res.redirect('/')
 		} else {
