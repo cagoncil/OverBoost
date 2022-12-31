@@ -1,6 +1,10 @@
 {
-  "name": "Overboost",
+  "name": "overboost",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.15.0",
+    "npm": "8.19.2"
+  },
   "description": "",
   "main": "src/app.js",
   "scripts": {
