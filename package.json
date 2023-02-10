@@ -16,7 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.1.0",
